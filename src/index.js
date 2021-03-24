@@ -1,9 +1,19 @@
 import ReactDOM from 'react-dom';
 import './index.css';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import Router from './Router';
+import authenticationReducer from './reducers/authentication';
+
+/* eslint-disable no-underscore-dangle */
+const store = createStore(authenticationReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+/* eslint-enable */
 
 ReactDOM.render(
-  <Router />,
+  <Provider store={store}>
+    <Router />
+  </Provider>,
   document.getElementById('root'),
 );
 
