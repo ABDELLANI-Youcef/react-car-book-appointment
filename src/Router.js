@@ -1,14 +1,34 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Home from './containers/Home';
 import Login from './containers/Login';
 
-const Router = () => (
-  <BrowserRouter>
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/login" component={Login} />
-    </Switch>
-  </BrowserRouter>
-);
+const Router = ({ authToken }) => {
+  if (authToken === '') {
+    return (
+      <BrowserRouter>
+        <Route component={Login} />
+      </BrowserRouter>
+    );
+  }
 
-export default Router;
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/login" component={Login} />
+      </Switch>
+    </BrowserRouter>
+  );
+};
+
+Router.propTypes = {
+  authToken: PropTypes.string.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  authToken: state,
+});
+
+export default connect(mapStateToProps)(Router);
