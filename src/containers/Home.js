@@ -46,16 +46,16 @@ const simpleAppointment = async (authToken, carId) => {
   }
 };
 
-const Home = ({ authToken, carsList, createCarsList }) => {
+const Home = ({ authentication, carsList, createCarsList }) => {
   useEffect(() => {
     if (carsList.length === 0) {
-      simpleRequest(authToken, createCarsList);
+      simpleRequest(authentication.authToken, createCarsList);
     }
   }, []);
 
   const handleClick = (e) => {
     const carId = parseInt(e.target.dataset.carId, 10);
-    simpleAppointment(authToken, carId);
+    simpleAppointment(authentication.authToken, carId);
   };
   let carsTable = null;
   if (carsList.length > 0) {
@@ -91,13 +91,13 @@ const Home = ({ authToken, carsList, createCarsList }) => {
 };
 
 Home.propTypes = {
-  authToken: PropTypes.string.isRequired,
+  authentication: PropTypes.objectOf(PropTypes.any).isRequired,
   createCarsList: PropTypes.func.isRequired,
   carsList: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
 const mapStateToProp = (state) => ({
-  authToken: state.authentication,
+  authentication: state.authentication,
   carsList: state.carsList,
 });
 

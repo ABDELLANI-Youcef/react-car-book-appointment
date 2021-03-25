@@ -18,7 +18,12 @@ const signUp = async (createToken, userdata) => {
     const response = await fetch('http://localhost:3000/signup', options);
     const data = await response.json();
 
-    createToken(data.auth_token);
+    const auth = {
+      username: data.username,
+      email: data.email,
+      authToken: data.auth_token,
+    };
+    createToken(auth);
   } catch (error) {
     createToken(error);
   }
@@ -41,8 +46,12 @@ const login = async (createToken, userdata) => {
 
     const response = await fetch('http://localhost:3000/auth/login', options);
     const data = await response.json();
-
-    createToken(data.auth_token);
+    const auth = {
+      username: data.username,
+      email: data.email,
+      authToken: data.auth_token,
+    };
+    createToken(auth);
   } catch (error) {
     createToken(error);
   }

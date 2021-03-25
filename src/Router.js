@@ -31,7 +31,7 @@ Router.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  authToken: state.authentication,
+  authToken: state.authentication.authToken,
 });
 
 export default connect(mapStateToProps)(Router);

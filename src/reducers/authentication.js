@@ -1,6 +1,10 @@
 import { CREATE_TOKEN } from '../actions/index';
 
-const defaultState = '';
+const defaultState = {
+  username: '',
+  email: '',
+  authToken: '',
+};
 
 const authenticationReducer = (state = defaultState, action) => {
   switch (action.type) {
