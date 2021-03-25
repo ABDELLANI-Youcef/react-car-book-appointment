@@ -28,10 +28,33 @@ const Home = ({ authToken, carsList, createCarsList }) => {
       simpleRequest(authToken, createCarsList);
     }
   }, []);
-
+  let carsTable = null;
+  if (carsList.length > 0) {
+    carsTable = (
+      <table>
+        <thead>
+          <tr>
+            <th>Mark</th>
+            <th>Model</th>
+            <th>Fabrication year</th>
+          </tr>
+        </thead>
+        <tbody>
+          {carsList.map((e) => (
+            <tr key={`${e.mark} ${e.model}`}>
+              <td>{e.mark}</td>
+              <td>{e.model}</td>
+              <td>{e.year}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    );
+  }
   return (
     <div>
       <h1>Welcome Home</h1>
+      {carsTable}
     </div>
   );
 };
