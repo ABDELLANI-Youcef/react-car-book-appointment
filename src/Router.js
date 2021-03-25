@@ -2,13 +2,13 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Home from './containers/Home';
-import Login from './containers/Login';
+import SignUp from './containers/SignUp';
 
 const Router = ({ authToken }) => {
   if (authToken === '') {
     return (
       <BrowserRouter>
-        <Route component={Login} />
+        <Route component={SignUp} />
       </BrowserRouter>
     );
   }
@@ -17,7 +17,7 @@ const Router = ({ authToken }) => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
+        <Route exact path="/SignUp" component={SignUp} />
       </Switch>
     </BrowserRouter>
   );

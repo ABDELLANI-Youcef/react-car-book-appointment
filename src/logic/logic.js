@@ -1,5 +1,4 @@
 const signUp = async (createToken, userdata) => {
-  console.log(userdata);
   const body = {
     name: userdata.username,
     email: userdata.email,
@@ -15,10 +14,9 @@ const signUp = async (createToken, userdata) => {
       },
       body: JSON.stringify(body),
     };
-    console.log(options);
+
     const response = await fetch('http://localhost:3000/signup', options);
     const data = await response.json();
-    console.log(data);
 
     createToken(data.auth_token);
   } catch (error) {
