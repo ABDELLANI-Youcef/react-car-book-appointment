@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import signUp from '../logic/logic';
+import { Link } from 'react-router-dom';
+import { signUp } from '../logic/logic';
 import { createToken } from '../actions/index';
 import SignUpForm from '../components/SignUpForm';
 
-const Login = ({ createToken }) => {
+const SignUp = ({ createToken }) => {
   const handleSubmit = (data) => {
     signUp(createToken, data);
   };
@@ -13,11 +14,12 @@ const Login = ({ createToken }) => {
     <div>
       <h1>Welcome to Sign up page</h1>
       <SignUpForm handleClick={handleSubmit} />
+      <Link to="/login">You have already an account?</Link>
     </div>
   );
 };
 
-Login.propTypes = {
+SignUp.propTypes = {
   createToken: PropTypes.func.isRequired,
 };
 
@@ -25,4 +27,4 @@ const mapDispatchToProp = {
   createToken,
 };
 
-export default connect(null, mapDispatchToProp)(Login);
+export default connect(null, mapDispatchToProp)(SignUp);

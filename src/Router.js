@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Home from './containers/Home';
 import SignUp from './containers/SignUp';
+import Login from './containers/Login';
 
 const Router = ({ authToken }) => {
   if (authToken === '') {
     return (
       <BrowserRouter>
-        <Route component={SignUp} />
+        <Route exact path="/" component={SignUp} />
+        <Route expact path="/login" component={Login} />
       </BrowserRouter>
     );
   }
@@ -18,6 +20,7 @@ const Router = ({ authToken }) => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/SignUp" component={SignUp} />
+        <Route expact path="/login" component={Login} />
       </Switch>
     </BrowserRouter>
   );
