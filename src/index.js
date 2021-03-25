@@ -1,12 +1,18 @@
 import ReactDOM from 'react-dom';
 import './index.css';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import Router from './Router';
 import authenticationReducer from './reducers/authentication';
+import carsListReducer from './reducers/car';
+
+const rootReducer = combineReducers({
+  authentication: authenticationReducer,
+  carsList: carsListReducer,
+});
 
 /* eslint-disable no-underscore-dangle */
-const store = createStore(authenticationReducer,
+const store = createStore(rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 /* eslint-enable */
 

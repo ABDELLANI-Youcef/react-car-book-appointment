@@ -20,7 +20,7 @@ const Login = ({ createToken, history }) => {
 
 Login.propTypes = {
   createToken: PropTypes.func.isRequired,
-  history: PropTypes.arrayOf(PropTypes.any).isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 const mapDispatchToProp = {

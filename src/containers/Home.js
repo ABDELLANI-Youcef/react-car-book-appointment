@@ -33,6 +33,6 @@ Home.propTypes = {
 };
 
 const mapStateToProp = (state) => ({
-  authToken: state,
+  authToken: state.authentication,
 });
 export default connect(mapStateToProp)(Home);
