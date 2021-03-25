@@ -22,12 +22,41 @@ const simpleRequest = async (authToken, createCarsList) => {
   }
 };
 
+const simpleAppointment = async (authToken, carId) => {
+  try {
+    const body = {
+      city: 'ain oussera',
+      date: '2021-11-11',
+    };
+    const options = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: authToken,
+      },
+      body: JSON.stringify(body),
+    };
+    const response = await fetch(`http://[::1]:3000/cars/${carId}/appointments`, options);
+    const data = await response.json();
+
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const Home = ({ authToken, carsList, createCarsList }) => {
   useEffect(() => {
     if (carsList.length === 0) {
       simpleRequest(authToken, createCarsList);
     }
   }, []);
+
+  const handleClick = (e) => {
+    const carId = parseInt(e.target.dataset.carId, 10);
+    simpleAppointment(authToken, carId);
+  };
   let carsTable = null;
   if (carsList.length > 0) {
     carsTable = (
@@ -37,6 +66,7 @@ const Home = ({ authToken, carsList, createCarsList }) => {
             <th>Mark</th>
             <th>Model</th>
             <th>Fabrication year</th>
+            <th>make appointment</th>
           </tr>
         </thead>
         <tbody>
@@ -45,6 +75,7 @@ const Home = ({ authToken, carsList, createCarsList }) => {
               <td>{e.mark}</td>
               <td>{e.model}</td>
               <td>{e.year}</td>
+              <td><button type="button" data-car-id={e.id} onClick={handleClick}>make appointment</button></td>
             </tr>
           ))}
         </tbody>
