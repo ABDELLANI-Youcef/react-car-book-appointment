@@ -27,7 +27,7 @@ const simpleAppointment = async (authToken, carId, date, city, addAppointment) =
   }
 };
 
-const Appointment = ({ userAuth, location, addAppointment }) => {
+const AppointmentMaking = ({ userAuth, location, addAppointment }) => {
   const [dateCity, setDateCity] = useState({
     date: '',
     city: '',
@@ -93,7 +93,7 @@ const Appointment = ({ userAuth, location, addAppointment }) => {
     </div>
   );
 };
-Appointment.propTypes = {
+AppointmentMaking.propTypes = {
   userAuth: PropTypes.objectOf(PropTypes.any).isRequired,
   location: PropTypes.objectOf(PropTypes.any).isRequired,
   addAppointment: PropTypes.func.isRequired,
@@ -107,4 +107,4 @@ const mapDispatchToProps = {
   addAppointment,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Appointment);
+export default connect(mapStateToProps, mapDispatchToProps)(AppointmentMaking);

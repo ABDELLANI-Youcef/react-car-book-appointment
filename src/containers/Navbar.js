@@ -11,7 +11,10 @@ const Navbar = ({ authToken, removeToken }) => {
   };
   if (authToken.authToken !== '') {
     return (
-      <button type="button" onClick={logout}>Log out</button>
+      <div>
+        <button type="button" onClick={logout}>Log out</button>
+        <Link to="/appointments">Appointments</Link>
+      </div>
     );
   }
   return (
