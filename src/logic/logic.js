@@ -29,7 +29,7 @@ const signUp = async (createToken, userdata) => {
   }
 };
 
-const login = async (createToken, userdata) => {
+const login = async (createToken, createAppointmentsList, userdata) => {
   const body = {
     email: userdata.email,
     password: userdata.password,
@@ -52,6 +52,7 @@ const login = async (createToken, userdata) => {
       authToken: data.auth_token,
     };
     createToken(auth);
+    createAppointmentsList(data.appointments);
   } catch (error) {
     createToken(error);
   }
