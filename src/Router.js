@@ -5,12 +5,14 @@ import Home from './containers/Home';
 import SignUp from './containers/SignUp';
 import Login from './containers/Login';
 import Appointment from './containers/Appointment';
+import Welcome from './components/Welcome';
 
 const Router = ({ authToken }) => {
   if (authToken === '') {
     return (
       <BrowserRouter>
-        <Route exact path="/" component={SignUp} />
+        <Route exact path="/" component={Welcome} />
+        <Route exact path="/SignUp" component={SignUp} />
         <Route expact path="/login" component={Login} />
       </BrowserRouter>
     );
