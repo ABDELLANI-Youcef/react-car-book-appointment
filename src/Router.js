@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Home from './containers/Home';
 import SignUp from './containers/SignUp';
 import Login from './containers/Login';
+import Appointment from './containers/Appointment';
 
 const Router = ({ authToken }) => {
   if (authToken === '') {
@@ -20,7 +21,8 @@ const Router = ({ authToken }) => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/SignUp" component={SignUp} />
-        <Route expact path="/login" component={Login} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/appointment" component={Appointment} />
       </Switch>
     </BrowserRouter>
   );

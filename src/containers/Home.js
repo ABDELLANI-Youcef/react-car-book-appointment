@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { createCarsList } from '../actions/index';
 
 const simpleRequest = async (authToken, createCarsList) => {
@@ -80,12 +81,14 @@ const Home = ({ authentication, carsList, createCarsList }) => {
           ))}
         </tbody>
       </table>
+
     );
   }
   return (
     <div>
       <h1>Welcome Home</h1>
       {carsTable}
+      <Link to="/appointment">Make appointment</Link>
     </div>
   );
 };
