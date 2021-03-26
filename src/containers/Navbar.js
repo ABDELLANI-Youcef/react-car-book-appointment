@@ -1,10 +1,18 @@
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { removeToken } from '../actions/index';
 
-const Navbar = ({ authToken }) => {
-  if (authToken !== '') {
-    return null;
+const Navbar = ({ authToken, removeToken }) => {
+  const history = useHistory();
+  const logout = () => {
+    removeToken();
+    history.push('/');
+  };
+  if (authToken.authToken !== '') {
+    return (
+      <button type="button" onClick={logout}>Log out</button>
+    );
   }
   return (
     <div>
@@ -15,9 +23,13 @@ const Navbar = ({ authToken }) => {
 };
 
 Navbar.propTypes = {
-  authToken: PropTypes.string.isRequired,
+  authToken: PropTypes.objectOf(PropTypes.any).isRequired,
+  removeToken: PropTypes.func.isRequired,
 };
 
-const mapStateToProp = (state) => ({ authToken: state.authentication.authToken });
+const mapStateToProp = (state) => ({ authToken: state.authentication });
+const mapDispatchToProps = {
+  removeToken,
+};
 
-export default connect(mapStateToProp)(Navbar);
+export default connect(mapStateToProp, mapDispatchToProps)(Navbar);

@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -6,20 +7,27 @@ import SignUp from './containers/SignUp';
 import Login from './containers/Login';
 import Appointment from './containers/Appointment';
 import Welcome from './components/Welcome';
+import Navbar from './containers/Navbar';
 
 const Router = ({ authToken }) => {
   if (authToken === '') {
     return (
-      <BrowserRouter>
-        <Route exact path="/" component={Welcome} />
-        <Route exact path="/SignUp" component={SignUp} />
-        <Route expact path="/login" component={Login} />
-      </BrowserRouter>
+      <>
+        <BrowserRouter>
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={Welcome} />
+            <Route exact path="/SignUp" component={SignUp} />
+            <Route expact path="/login" component={Login} />
+          </Switch>
+        </BrowserRouter>
+      </>
     );
   }
 
   return (
     <BrowserRouter>
+      <Navbar />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/SignUp" component={SignUp} />
