@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { addAppointment } from '../actions/index';
 
-const simpleAppointment = async (authToken, carId, date, city) => {
+const simpleAppointment = async (authToken, carId, date, city, addAppointment) => {
   try {
     const body = {
       city,
@@ -19,14 +20,14 @@ const simpleAppointment = async (authToken, carId, date, city) => {
     };
     const response = await fetch(`http://[::1]:3000/cars/${carId}/appointments`, options);
     const data = await response.json();
-
-    console.log(data);
+    addAppointment(data);
+    return true;
   } catch (error) {
-    console.log(error);
+    return false;
   }
 };
 
-const Appointment = ({ userAuth, location }) => {
+const Appointment = ({ userAuth, location, addAppointment }) => {
   const [dateCity, setDateCity] = useState({
     date: '',
     city: '',
@@ -50,7 +51,7 @@ const Appointment = ({ userAuth, location }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    simpleAppointment(userAuth.authToken, car.id, dateCity.date, dateCity.city);
+    simpleAppointment(userAuth.authToken, car.id, dateCity.date, dateCity.city, addAppointment);
   };
 
   return (
@@ -95,10 +96,15 @@ const Appointment = ({ userAuth, location }) => {
 Appointment.propTypes = {
   userAuth: PropTypes.objectOf(PropTypes.any).isRequired,
   location: PropTypes.objectOf(PropTypes.any).isRequired,
+  addAppointment: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   userAuth: state.authentication,
 });
 
-export default connect(mapStateToProps)(Appointment);
+const mapDispatchToProps = {
+  addAppointment,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Appointment);

@@ -2,6 +2,7 @@ const CREATE_TOKEN = 'CREATE_TOKEN';
 const REMOVE_TOKEN = 'REMOVE_TOKEN';
 const CREATE_CARS_LIST = 'CREATE_CARS_LIST';
 const CREATE_APPOINTMENT = 'CREATE_APPOINTMENT';
+const ADD_APPOINTMENT = 'ADD_APPOINTMENT';
 
 const createToken = (token) => ({
   type: CREATE_TOKEN,
@@ -22,7 +23,12 @@ const createAppointmentsList = (list) => ({
   payload: list,
 });
 
+const addAppointment = (appointment) => ({
+  type: ADD_APPOINTMENT,
+  payload: appointment,
+});
+
 export {
   CREATE_TOKEN, createToken, CREATE_CARS_LIST, createCarsList, REMOVE_TOKEN, removeToken,
-  CREATE_APPOINTMENT, createAppointmentsList,
+  CREATE_APPOINTMENT, createAppointmentsList, ADD_APPOINTMENT, addAppointment,
 };
