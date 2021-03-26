@@ -5,10 +5,12 @@ import { Provider } from 'react-redux';
 import Router from './Router';
 import authenticationReducer from './reducers/authentication';
 import carsListReducer from './reducers/car';
+import appointmentsReducer from './reducers/appointment';
 
 const rootReducer = combineReducers({
   authentication: authenticationReducer,
   carsList: carsListReducer,
+  appointment: appointmentsReducer,
 });
 
 /* eslint-disable no-underscore-dangle */
