@@ -48,7 +48,7 @@ const Home = ({ authentication, carsList, createCarsList }) => {
               <td>{e.mark}</td>
               <td>{e.model}</td>
               <td>{e.year}</td>
-              <td><Link to={{ pathname: '/appointment', state: { car: e } }}>Make appointment</Link></td>
+              <td><Link to={{ pathname: '/make-appointment', state: { car: e } }}>Make appointment</Link></td>
             </tr>
           ))}
         </tbody>
