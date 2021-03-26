@@ -23,30 +23,6 @@ const simpleRequest = async (authToken, createCarsList) => {
   }
 };
 
-const simpleAppointment = async (authToken, carId) => {
-  try {
-    const body = {
-      city: 'ain oussera',
-      date: '2021-11-11',
-    };
-    const options = {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: authToken,
-      },
-      body: JSON.stringify(body),
-    };
-    const response = await fetch(`http://[::1]:3000/cars/${carId}/appointments`, options);
-    const data = await response.json();
-
-    console.log(data);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 const Home = ({ authentication, carsList, createCarsList }) => {
   useEffect(() => {
     if (carsList.length === 0) {
@@ -54,10 +30,6 @@ const Home = ({ authentication, carsList, createCarsList }) => {
     }
   }, []);
 
-  const handleClick = (e) => {
-    const carId = parseInt(e.target.dataset.carId, 10);
-    simpleAppointment(authentication.authToken, carId);
-  };
   let carsTable = null;
   if (carsList.length > 0) {
     carsTable = (
@@ -76,7 +48,7 @@ const Home = ({ authentication, carsList, createCarsList }) => {
               <td>{e.mark}</td>
               <td>{e.model}</td>
               <td>{e.year}</td>
-              <td><button type="button" data-car-id={e.id} onClick={handleClick}>make appointment</button></td>
+              <td><Link to={{ pathname: '/appointment', state: { car: e } }}>Make appointment</Link></td>
             </tr>
           ))}
         </tbody>
@@ -84,11 +56,12 @@ const Home = ({ authentication, carsList, createCarsList }) => {
 
     );
   }
+
   return (
     <div>
       <h1>Welcome Home</h1>
       {carsTable}
-      <Link to="/appointment">Make appointment</Link>
+
     </div>
   );
 };
