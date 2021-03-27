@@ -1,6 +1,31 @@
 import { useState } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const CreateCar = () => {
+const sendCreateCar = async (auth, carsdata) => {
+  try {
+    const body = {
+      mark: carsdata.mark,
+      model: carsdata.model,
+      year: carsdata.year,
+    };
+    const options = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: auth.authToken,
+      },
+      body: JSON.stringify(body),
+    };
+    await fetch('http://[::1]:3000/cars/', options);
+    return true;
+  } catch (error) {
+    return false;
+  }
+};
+
+const CreateCar = ({ auth }) => {
   const [data, setData] = useState({
     mark: '',
     model: '',
@@ -28,9 +53,17 @@ const CreateCar = () => {
     setData({ mark, model, year });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (auth.admin) {
+      sendCreateCar(auth, data);
+    }
+  };
+
   return (
     <div>
-      <form>
+      {auth.username}
+      <form onSubmit={handleSubmit}>
         <label htmlFor="mark_input">
           Mark:
           {' '}
@@ -52,4 +85,12 @@ const CreateCar = () => {
   );
 };
 
-export default CreateCar;
+CreateCar.propTypes = {
+  auth: PropTypes.objectOf(PropTypes.any).isRequired,
+};
+
+const mapStateToPorp = (state) => ({
+  auth: state.authentication,
+});
+
+export default connect(mapStateToPorp)(CreateCar);
