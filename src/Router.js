@@ -9,6 +9,7 @@ import AppointmentMaking from './containers/AppointmentMaking';
 import Welcome from './components/Welcome';
 import Navbar from './containers/Navbar';
 import Appointments from './containers/Appointments';
+import CreateCar from './containers/CreateCar';
 
 const Router = ({ authToken }) => {
   if (authToken === '') {
@@ -30,6 +31,7 @@ const Router = ({ authToken }) => {
     <BrowserRouter>
       <Navbar />
       <Switch>
+        <Route exact path="/create_car" component={CreateCar} />
         <Route exact path="/" component={Home} />
         <Route exact path="/SignUp" component={SignUp} />
         <Route exact path="/login" component={Login} />

@@ -9,11 +9,24 @@ const Navbar = ({ authToken, removeToken }) => {
     removeToken();
     history.push('/');
   };
+
+  let adminText = null;
+
+  if (authToken.admin) {
+    adminText = (
+      <p>
+        Welcome Admin;
+        <Link to="/create_car">Create a car?</Link>
+      </p>
+    );
+  }
+
   if (authToken.authToken !== '') {
     return (
       <div>
         <button type="button" onClick={logout}>Log out</button>
         <Link to="/appointments">Appointments</Link>
+        {adminText}
       </div>
     );
   }

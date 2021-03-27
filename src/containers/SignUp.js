@@ -5,9 +5,10 @@ import { signUp } from '../logic/logic';
 import { createToken } from '../actions/index';
 import SignUpForm from '../components/SignUpForm';
 
-const SignUp = ({ createToken }) => {
+const SignUp = ({ createToken, history }) => {
   const handleSubmit = (data) => {
     signUp(createToken, data);
+    history.push('/');
   };
 
   return (
@@ -21,6 +22,7 @@ const SignUp = ({ createToken }) => {
 
 SignUp.propTypes = {
   createToken: PropTypes.func.isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 const mapDispatchToProp = {
