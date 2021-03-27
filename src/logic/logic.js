@@ -50,6 +50,7 @@ const login = async (createToken, createAppointmentsList, userdata) => {
       username: data.username,
       email: data.email,
       authToken: data.auth_token,
+      admin: data.admin,
     };
     createToken(auth);
     createAppointmentsList(data.appointments);

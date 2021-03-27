@@ -4,6 +4,7 @@ const defaultState = {
   username: '',
   email: '',
   authToken: '',
+  admin: false,
 };
 
 const authenticationReducer = (state = defaultState, action) => {
