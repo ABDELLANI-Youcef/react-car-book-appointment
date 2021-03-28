@@ -55,10 +55,12 @@ const Home = ({ authentication, carsList, createCarsList }) => {
 
   let carsTable = null;
   let deleteTH = null;
+  let editTH = null;
 
   if (carsList.length > 0) {
     if (authentication.admin) {
       deleteTH = (<th>delete the car</th>);
+      editTH = (<th>edit the car</th>);
     }
     carsTable = (
       <table>
@@ -69,13 +71,16 @@ const Home = ({ authentication, carsList, createCarsList }) => {
             <th>Fabrication year</th>
             <th>make appointment</th>
             {deleteTH}
+            {editTH}
           </tr>
         </thead>
         <tbody>
           {carsList.map((e) => {
             let deleteTD = null;
+            let editTD = null;
             if (authentication.admin) {
               deleteTD = (<td><button type="button" data-car-id={e.id} onClick={deleteCar}>delete the car</button></td>);
+              editTD = (<td><Link to={{ pathname: '/edit_car', state: { car: e } }}>edit the car</Link></td>);
             }
             return (
               <tr key={`${e.mark} ${e.model}`}>
@@ -84,6 +89,7 @@ const Home = ({ authentication, carsList, createCarsList }) => {
                 <td>{e.year}</td>
                 <td><Link to={{ pathname: '/make-appointment', state: { car: e } }}>Make appointment</Link></td>
                 {deleteTD}
+                {editTD}
               </tr>
             );
           })}

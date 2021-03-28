@@ -10,6 +10,7 @@ import Welcome from './components/Welcome';
 import Navbar from './containers/Navbar';
 import Appointments from './containers/Appointments';
 import CreateCar from './containers/CreateCar';
+import EditCarForm from './containers/EditCarForm';
 
 const Router = ({ authToken }) => {
   if (authToken === '') {
@@ -32,6 +33,7 @@ const Router = ({ authToken }) => {
       <Navbar />
       <Switch>
         <Route exact path="/create_car" component={CreateCar} />
+        <Route exact path="/edit_car" component={EditCarForm} />
         <Route exact path="/" component={Home} />
         <Route exact path="/SignUp" component={SignUp} />
         <Route exact path="/login" component={Login} />
