@@ -23,6 +23,24 @@ const simpleRequest = async (authToken, createCarsList) => {
   }
 };
 
+const deleteCarRequest = async (authToken, carId) => {
+  try {
+    const options = {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: authToken,
+      },
+    };
+    await fetch(`http://[::1]:3000/cars/${carId}`, options);
+
+    return true;
+  } catch (error) {
+    return false;
+  }
+};
+
 const Home = ({ authentication, carsList, createCarsList }) => {
   useEffect(() => {
     if (carsList.length === 0) {
@@ -30,8 +48,18 @@ const Home = ({ authentication, carsList, createCarsList }) => {
     }
   }, []);
 
+  const deleteCar = (e) => {
+    const carId = parseInt(e.target.dataset.carId, 10);
+    deleteCarRequest(authentication.authToken, carId);
+  };
+
   let carsTable = null;
+  let deleteTH = null;
+
   if (carsList.length > 0) {
+    if (authentication.admin) {
+      deleteTH = (<th>delete the car</th>);
+    }
     carsTable = (
       <table>
         <thead>
@@ -40,17 +68,25 @@ const Home = ({ authentication, carsList, createCarsList }) => {
             <th>Model</th>
             <th>Fabrication year</th>
             <th>make appointment</th>
+            {deleteTH}
           </tr>
         </thead>
         <tbody>
-          {carsList.map((e) => (
-            <tr key={`${e.mark} ${e.model}`}>
-              <td>{e.mark}</td>
-              <td>{e.model}</td>
-              <td>{e.year}</td>
-              <td><Link to={{ pathname: '/make-appointment', state: { car: e } }}>Make appointment</Link></td>
-            </tr>
-          ))}
+          {carsList.map((e) => {
+            let deleteTD = null;
+            if (authentication.admin) {
+              deleteTD = (<td><button type="button" data-car-id={e.id} onClick={deleteCar}>delete the car</button></td>);
+            }
+            return (
+              <tr key={`${e.mark} ${e.model}`}>
+                <td>{e.mark}</td>
+                <td>{e.model}</td>
+                <td>{e.year}</td>
+                <td><Link to={{ pathname: '/make-appointment', state: { car: e } }}>Make appointment</Link></td>
+                {deleteTD}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
 
