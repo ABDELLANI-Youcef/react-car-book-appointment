@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import EditCarForm from '../components/EditCarForm';
 import { editCarRequest } from '../logic/carRequests';
 import { createCarsList } from '../actions/index';
+import styles from '../styles/Form.module.css';
 
 const EditCar = ({ location, auth, createCarsList }) => {
   const { car } = location.state;
@@ -17,7 +18,8 @@ const EditCar = ({ location, auth, createCarsList }) => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
+      <h1>Edit the car</h1>
       <EditCarForm car={car} clickHandler={handleSubmit} />
     </div>
   );

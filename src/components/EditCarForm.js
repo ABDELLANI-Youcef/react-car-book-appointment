@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import styles from '../styles/Form.module.css';
 
 const EditCarForm = ({ car, clickHandler }) => {
   const [cardata, setCardata] = useState({
@@ -42,28 +43,36 @@ const EditCarForm = ({ car, clickHandler }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="mark_edit">
-        mark:
-        {' '}
-        <input id="mark_edit" type="text" value={cardata.mark} onChange={handleChange} />
-      </label>
-      <label htmlFor="model_edit">
-        model:
-        {' '}
-        <input id="model_edit" type="text" value={cardata.model} onChange={handleChange} />
-      </label>
-      <label htmlFor="year_edit">
-        year:
-        {' '}
-        <input id="year_edit" type="number" value={cardata.year} onChange={handleChange} />
-      </label>
-      <label htmlFor="price_edit">
-        Price:
-        {' '}
-        <input id="price_edit" type="number" value={cardata.price} onChange={handleChange} />
-      </label>
-      <input type="submit" value="submit" />
+    <form onSubmit={handleSubmit} className={styles.form_div}>
+      <div className={styles.div_label}>
+        <label htmlFor="mark_edit" className={styles.input_line}>
+          mark:
+          {' '}
+          <input id="mark_edit" type="text" value={cardata.mark} onChange={handleChange} />
+        </label>
+      </div>
+      <div className={styles.div_label}>
+        <label htmlFor="model_edit" className={styles.input_line}>
+          model:
+          {' '}
+          <input id="model_edit" type="text" value={cardata.model} onChange={handleChange} />
+        </label>
+      </div>
+      <div className={styles.div_label}>
+        <label htmlFor="year_edit" className={styles.input_line}>
+          year:
+          {' '}
+          <input id="year_edit" type="number" value={cardata.year} onChange={handleChange} />
+        </label>
+      </div>
+      <div className={styles.div_label}>
+        <label htmlFor="price_edit" className={styles.input_line}>
+          Price:
+          {' '}
+          <input id="price_edit" type="number" value={cardata.price} onChange={handleChange} />
+        </label>
+      </div>
+      <input type="submit" value="submit" className={styles.submit} />
     </form>
   );
 };
