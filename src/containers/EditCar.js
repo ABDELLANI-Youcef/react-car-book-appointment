@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import EditCarForm from '../components/EditCarForm';
-import { editCarRequest } from '../logic/CarRequests';
+import { editCarRequest } from '../logic/carRequests';
 
 const EditCar = ({ location, auth }) => {
   const { car } = location.state;

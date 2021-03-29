@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { createCarsList } from '../actions/index';
+import { deleteCarRequest } from '../logic/carRequests';
 
 const simpleRequest = async (authToken, createCarsList) => {
   try {
@@ -20,24 +21,6 @@ const simpleRequest = async (authToken, createCarsList) => {
     createCarsList(data);
   } catch (error) {
     createCarsList(error);
-  }
-};
-
-const deleteCarRequest = async (authToken, carId) => {
-  try {
-    const options = {
-      method: 'DELETE',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: authToken,
-      },
-    };
-    await fetch(`http://[::1]:3000/cars/${carId}`, options);
-
-    return true;
-  } catch (error) {
-    return false;
   }
 };
 

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CreateCarForm from '../components/CreateCarForm';
-import { createCarRequest } from '../logic/CarRequests';
+import { createCarRequest } from '../logic/carRequests';
 
 const CreateCar = ({ auth }) => {
   const handleClick = (data) => {
