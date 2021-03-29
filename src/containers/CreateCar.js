@@ -4,19 +4,20 @@ import PropTypes from 'prop-types';
 
 const sendCreateCar = async (auth, carsdata) => {
   try {
-    const body = {
-      mark: carsdata.mark,
-      model: carsdata.model,
-      year: carsdata.year,
-    };
+    const formData = new FormData();
+    formData.append('image', carsdata.imageFile);
+
+    formData.set('mark', carsdata.mark);
+    formData.set('model', carsdata.model);
+    formData.set('year', carsdata.year);
+
     const options = {
       method: 'POST',
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+
         Authorization: auth.authToken,
       },
-      body: JSON.stringify(body),
+      body: formData,
     };
     await fetch('http://[::1]:3000/cars/', options);
     return true;
@@ -30,12 +31,17 @@ const CreateCar = ({ auth }) => {
     mark: '',
     model: '',
     year: 2021,
+    image: '',
+    imageFile: '',
   });
 
   const handleChange = (e) => {
     const { id } = e.target;
     const { value } = e.target;
-    let { mark, model, year } = data;
+    const { files } = e.target;
+    let {
+      mark, model, year, image, imageFile,
+    } = data;
     switch (id) {
       case 'mark_input':
         mark = value;
@@ -45,12 +51,19 @@ const CreateCar = ({ auth }) => {
         model = value;
         break;
 
+      case 'image_input':
+        image = value;
+        [imageFile] = files;
+        break;
+
       default:
         year = parseInt(value, 10);
         break;
     }
 
-    setData({ mark, model, year });
+    setData({
+      mark, model, year, image, imageFile,
+    });
   };
 
   const handleSubmit = (e) => {
@@ -79,8 +92,15 @@ const CreateCar = ({ auth }) => {
           {' '}
           <input id="year_input" type="number" value={data.year} onChange={handleChange} />
         </label>
+        <label htmlFor="image_input">
+          Car image:
+          {' '}
+          <input id="image_input" type="file" value={data.image} onChange={handleChange} />
+        </label>
         <input type="submit" value="submit" />
       </form>
+
+      <img src={data.imageFile} alt="car" />
     </div>
   );
 };
