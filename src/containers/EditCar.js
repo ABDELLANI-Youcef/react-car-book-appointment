@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import EditCarForm from '../components/EditCarForm';
-import sendEditCarRequest from '../logic/editCarRequest';
+import { editCarRequest } from '../logic/CarRequests';
 
 const EditCar = ({ location, auth }) => {
   const { car } = location.state;
 
   const handleSubmit = (cardata) => {
     if (auth.admin) {
-      sendEditCarRequest(auth, cardata, car.id);
+      editCarRequest(auth, cardata, car.id);
     }
   };
 
