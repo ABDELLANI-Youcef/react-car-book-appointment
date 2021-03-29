@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import { addAppointment } from '../actions/index';
 import AppointmentMakingForm from '../components/AppointmentMakingForm';
 import createAppointmentRequest from '../logic/appointmentRequest';
@@ -8,10 +9,12 @@ const AppointmentMaking = ({
   userAuth, location, addAppointment,
 }) => {
   const { car } = location.state;
+  const history = useHistory();
 
   const handleClick = (dateCity) => {
     createAppointmentRequest(userAuth.authToken, car.id,
       dateCity, addAppointment);
+    history.push('/');
   };
 
   let image = null;

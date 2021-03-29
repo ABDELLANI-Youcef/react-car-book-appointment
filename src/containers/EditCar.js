@@ -1,15 +1,18 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import EditCarForm from '../components/EditCarForm';
 import { editCarRequest } from '../logic/carRequests';
 
 const EditCar = ({ location, auth }) => {
   const { car } = location.state;
+  const history = useHistory();
 
   const handleSubmit = (cardata) => {
     if (auth.admin) {
       editCarRequest(auth, cardata, car.id);
     }
+    history.push('/');
   };
 
   return (

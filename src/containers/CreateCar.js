@@ -1,13 +1,16 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import CreateCarForm from '../components/CreateCarForm';
 import { createCarRequest } from '../logic/carRequests';
 
 const CreateCar = ({ auth }) => {
+  const history = useHistory();
   const handleClick = (data) => {
     if (auth.admin) {
       createCarRequest(auth, data);
     }
+    history.push('/');
   };
 
   return (
