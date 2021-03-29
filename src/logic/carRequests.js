@@ -64,3 +64,22 @@ export const deleteCarRequest = async (authToken, carId) => {
     return false;
   }
 };
+
+export const carsListRequest = async (authToken, createCarsList) => {
+  try {
+    const options = {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: authToken,
+      },
+    };
+    const response = await fetch('http://[::1]:3000/cars', options);
+    const data = await response.json();
+
+    createCarsList(data);
+  } catch (error) {
+    createCarsList(error);
+  }
+};

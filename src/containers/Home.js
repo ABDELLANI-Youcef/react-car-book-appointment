@@ -3,31 +3,12 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { createCarsList } from '../actions/index';
-import { deleteCarRequest } from '../logic/carRequests';
-
-const simpleRequest = async (authToken, createCarsList) => {
-  try {
-    const options = {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: authToken,
-      },
-    };
-    const response = await fetch('http://[::1]:3000/cars', options);
-    const data = await response.json();
-
-    createCarsList(data);
-  } catch (error) {
-    createCarsList(error);
-  }
-};
+import { carsListRequest, deleteCarRequest } from '../logic/carRequests';
 
 const Home = ({ authentication, carsList, createCarsList }) => {
   useEffect(() => {
     if (carsList.length === 0) {
-      simpleRequest(authentication.authToken, createCarsList);
+      carsListRequest(authentication.authToken, createCarsList);
     }
   }, []);
 
