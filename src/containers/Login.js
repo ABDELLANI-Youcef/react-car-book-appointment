@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { login } from '../logic/logic';
 import { createToken, createAppointmentsList } from '../actions/index';
 import LoginForm from '../components/LoginForm';
-import styles from '../styles/Login.module.css';
+import styles from '../styles/Form.module.css';
 
 const Login = ({ createToken, createAppointmentsList, history }) => {
   const handleSubmit = (data) => {

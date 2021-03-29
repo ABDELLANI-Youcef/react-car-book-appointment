@@ -31,7 +31,7 @@ const CarsTable = ({ cars, admin, clickHandler }) => {
           let deleteTD = null;
           let editTD = null;
           if (admin) {
-            deleteTD = (<td><button type="button" data-car-id={e.id} onClick={handleClick}>delete the car</button></td>);
+            deleteTD = (<td><button type="button" data-car-id={e.id} onClick={handleClick}>Delete</button></td>);
             editTD = (<td><Link to={{ pathname: '/edit_car', state: { car: e } }}>edit the car</Link></td>);
           }
           return (

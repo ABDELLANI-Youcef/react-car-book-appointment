@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import styles from '../styles/Login.module.css';
+import styles from '../styles/Form.module.css';
 
 const SignUpForm = ({ handleClick }) => {
   const [data, setData] = useState({

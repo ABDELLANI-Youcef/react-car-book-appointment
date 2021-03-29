@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { signUp } from '../logic/logic';
 import { createToken } from '../actions/index';
 import SignUpForm from '../components/SignUpForm';
-import styles from '../styles/Login.module.css';
+import styles from '../styles/Form.module.css';
 
 const SignUp = ({ createToken, history }) => {
   const handleSubmit = (data) => {
