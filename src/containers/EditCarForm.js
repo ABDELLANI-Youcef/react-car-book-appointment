@@ -8,6 +8,7 @@ const sendEditCar = async (auth, cardata, carId) => {
       mark: cardata.mark,
       model: cardata.model,
       year: cardata.year,
+      price: cardata.price,
     };
     const options = {
       method: 'PUT',
@@ -31,12 +32,15 @@ const EditCarForm = ({ location, auth }) => {
     mark: car.mark,
     model: car.model,
     year: car.year,
+    price: car.price,
   });
 
   const handleChange = (e) => {
     const { id } = e.target;
     const { value } = e.target;
-    let { mark, model, year } = cardata;
+    let {
+      mark, model, year, price,
+    } = cardata;
     switch (id) {
       case 'mark_edit':
         mark = value;
@@ -46,11 +50,17 @@ const EditCarForm = ({ location, auth }) => {
         model = value;
         break;
 
-      default:
+      case 'year_edit':
         year = parseInt(value, 10);
         break;
+
+      default:
+        price = parseInt(value, 10);
+        break;
     }
-    setCardata({ mark, model, year });
+    setCardata({
+      mark, model, year, price,
+    });
   };
 
   const handleSubmit = (e) => {
@@ -77,6 +87,11 @@ const EditCarForm = ({ location, auth }) => {
           year:
           {' '}
           <input id="year_edit" type="number" value={cardata.year} onChange={handleChange} />
+        </label>
+        <label htmlFor="price_edit">
+          Price:
+          {' '}
+          <input id="price_edit" type="number" value={cardata.price} onChange={handleChange} />
         </label>
         <input type="submit" value="submit" />
       </form>

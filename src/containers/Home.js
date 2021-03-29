@@ -69,6 +69,7 @@ const Home = ({ authentication, carsList, createCarsList }) => {
             <th>Mark</th>
             <th>Model</th>
             <th>Fabrication year</th>
+            <th>Price of trying</th>
             <th>make appointment</th>
             {deleteTH}
             {editTH}
@@ -87,6 +88,7 @@ const Home = ({ authentication, carsList, createCarsList }) => {
                 <td>{e.mark}</td>
                 <td>{e.model}</td>
                 <td>{e.year}</td>
+                <td>{e.price}</td>
                 <td><Link to={{ pathname: '/make-appointment', state: { car: e } }}>Make appointment</Link></td>
                 {deleteTD}
                 {editTD}

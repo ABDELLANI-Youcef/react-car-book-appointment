@@ -10,6 +10,7 @@ const sendCreateCar = async (auth, carsdata) => {
     formData.set('mark', carsdata.mark);
     formData.set('model', carsdata.model);
     formData.set('year', carsdata.year);
+    formData.set('price', carsdata.price);
 
     const options = {
       method: 'POST',
@@ -31,6 +32,7 @@ const CreateCar = ({ auth }) => {
     mark: '',
     model: '',
     year: 2021,
+    price: 0,
     image: '',
     imageFile: '',
   });
@@ -40,7 +42,7 @@ const CreateCar = ({ auth }) => {
     const { value } = e.target;
     const { files } = e.target;
     let {
-      mark, model, year, image, imageFile,
+      mark, model, year, image, imageFile, price,
     } = data;
     switch (id) {
       case 'mark_input':
@@ -56,13 +58,17 @@ const CreateCar = ({ auth }) => {
         [imageFile] = files;
         break;
 
-      default:
+      case 'year_input':
         year = parseInt(value, 10);
+        break;
+
+      default:
+        price = parseInt(value, 10);
         break;
     }
 
     setData({
-      mark, model, year, image, imageFile,
+      mark, model, year, image, imageFile, price,
     });
   };
 
@@ -91,6 +97,11 @@ const CreateCar = ({ auth }) => {
           Year:
           {' '}
           <input id="year_input" type="number" value={data.year} onChange={handleChange} />
+        </label>
+        <label htmlFor="price_input">
+          Price:
+          {' '}
+          <input id="price_input" type="number" value={data.price} onChange={handleChange} />
         </label>
         <label htmlFor="image_input">
           Car image:

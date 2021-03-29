@@ -27,7 +27,9 @@ const simpleAppointment = async (authToken, carId, date, city, addAppointment) =
   }
 };
 
-const AppointmentMaking = ({ userAuth, location, addAppointment }) => {
+const AppointmentMaking = ({
+  userAuth, location, addAppointment,
+}) => {
   const [dateCity, setDateCity] = useState({
     date: '',
     city: '',
@@ -54,6 +56,10 @@ const AppointmentMaking = ({ userAuth, location, addAppointment }) => {
     simpleAppointment(userAuth.authToken, car.id, dateCity.date, dateCity.city, addAppointment);
   };
 
+  let image = null;
+  if (car.id !== null) {
+    image = <img src={`http://[::1]:3000${car.image}`} alt="car" />;
+  }
   return (
     <div>
       Welcome
@@ -90,6 +96,7 @@ const AppointmentMaking = ({ userAuth, location, addAppointment }) => {
           <input type="submit" value="Submit" />
         </div>
       </form>
+      {image}
     </div>
   );
 };
