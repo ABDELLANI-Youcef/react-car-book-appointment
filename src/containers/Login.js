@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { login } from '../logic/logic';
 import { createToken, createAppointmentsList } from '../actions/index';
 import LoginForm from '../components/LoginForm';
+import styles from '../styles/Login.module.css';
 
 const Login = ({ createToken, createAppointmentsList, history }) => {
   const handleSubmit = (data) => {
@@ -11,8 +12,8 @@ const Login = ({ createToken, createAppointmentsList, history }) => {
   };
 
   return (
-    <div>
-      <h1>Welcome to Sign up page</h1>
+    <div className={styles.container}>
+      <h1>Welcome to Log In page</h1>
       <LoginForm handleClick={handleSubmit} />
     </div>
   );

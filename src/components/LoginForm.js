@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import styles from '../styles/Login.module.css';
 
 const LoginForm = ({ handleClick }) => {
   const [data, setData] = useState({
@@ -30,19 +31,23 @@ const LoginForm = ({ handleClick }) => {
     handleClick(data);
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="email">
-        E-mail:
-        {' '}
-        <input id="email" type="email" value={data.email} onChange={handleChange} />
-      </label>
-      <label htmlFor="password">
-        Password:
-        {' '}
-        <input id="password" type="password" value={data.password} onChange={handleChange} />
-      </label>
+    <form onSubmit={handleSubmit} className={styles.form_div}>
+      <div className={styles.div_label}>
+        <label htmlFor="email" className={styles.input_line}>
+          E-mail:
+          {' '}
+          <input id="email" type="email" value={data.email} onChange={handleChange} />
+        </label>
+      </div>
+      <div className={styles.div_label}>
+        <label htmlFor="password" className={styles.input_line}>
+          Password:
+          {' '}
+          <input id="password" type="password" value={data.password} onChange={handleChange} />
+        </label>
+      </div>
 
-      <input type="submit" value="submit" />
+      <input type="submit" value="submit" className={styles.submit} />
     </form>
   );
 };

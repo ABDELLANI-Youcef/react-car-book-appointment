@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import styles from '../styles/Login.module.css';
 
 const SignUpForm = ({ handleClick }) => {
   const [data, setData] = useState({
@@ -40,28 +41,36 @@ const SignUpForm = ({ handleClick }) => {
     handleClick(data);
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="username">
-        Username:
-        {' '}
-        <input id="username" type="text" value={data.username} onChange={handleChange} />
-      </label>
-      <label htmlFor="email">
-        E-mail:
-        {' '}
-        <input id="email" type="email" value={data.email} onChange={handleChange} />
-      </label>
-      <label htmlFor="password">
-        Password:
-        {' '}
-        <input id="password" type="password" value={data.password} onChange={handleChange} />
-      </label>
-      <label htmlFor="confirmPassword">
-        Confirm password:
-        {' '}
-        <input id="confirmPassword" type="password" value={data.confirmPassword} onChange={handleChange} />
-      </label>
-      <input type="submit" value="submit" />
+    <form onSubmit={handleSubmit} className={styles.form_div}>
+      <div className={styles.div_label}>
+        <label htmlFor="username" className={styles.input_line}>
+          Username:
+          {' '}
+          <input id="username" type="text" value={data.username} onChange={handleChange} />
+        </label>
+      </div>
+      <div className={styles.div_label}>
+        <label htmlFor="email" className={styles.input_line}>
+          E-mail:
+          {' '}
+          <input id="email" type="email" value={data.email} onChange={handleChange} />
+        </label>
+      </div>
+      <div className={styles.div_label}>
+        <label htmlFor="password" className={styles.input_line}>
+          Password:
+          {' '}
+          <input id="password" type="password" value={data.password} onChange={handleChange} />
+        </label>
+      </div>
+      <div className={styles.div_label}>
+        <label htmlFor="confirmPassword" className={styles.input_line}>
+          Confirm password:
+          {' '}
+          <input id="confirmPassword" type="password" value={data.confirmPassword} onChange={handleChange} />
+        </label>
+      </div>
+      <input type="submit" value="submit" className={styles.submit} />
     </form>
   );
 };

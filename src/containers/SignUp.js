@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { signUp } from '../logic/logic';
 import { createToken } from '../actions/index';
 import SignUpForm from '../components/SignUpForm';
+import styles from '../styles/Login.module.css';
 
 const SignUp = ({ createToken, history }) => {
   const handleSubmit = (data) => {
@@ -12,7 +13,7 @@ const SignUp = ({ createToken, history }) => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Welcome to Sign up page</h1>
       <SignUpForm handleClick={handleSubmit} />
       <Link to="/login">You have already an account?</Link>
