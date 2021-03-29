@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import CreateCarForm from '../components/CreateCarForm';
 
 const sendCreateCar = async (auth, carsdata) => {
   try {
@@ -28,52 +28,7 @@ const sendCreateCar = async (auth, carsdata) => {
 };
 
 const CreateCar = ({ auth }) => {
-  const [data, setData] = useState({
-    mark: '',
-    model: '',
-    year: 2021,
-    price: 0,
-    image: '',
-    imageFile: '',
-  });
-
-  const handleChange = (e) => {
-    const { id } = e.target;
-    const { value } = e.target;
-    const { files } = e.target;
-    let {
-      mark, model, year, image, imageFile, price,
-    } = data;
-    switch (id) {
-      case 'mark_input':
-        mark = value;
-        break;
-
-      case 'model_input':
-        model = value;
-        break;
-
-      case 'image_input':
-        image = value;
-        [imageFile] = files;
-        break;
-
-      case 'year_input':
-        year = parseInt(value, 10);
-        break;
-
-      default:
-        price = parseInt(value, 10);
-        break;
-    }
-
-    setData({
-      mark, model, year, image, imageFile, price,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleClick = (data) => {
     if (auth.admin) {
       sendCreateCar(auth, data);
     }
@@ -82,36 +37,7 @@ const CreateCar = ({ auth }) => {
   return (
     <div>
       {auth.username}
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="mark_input">
-          Mark:
-          {' '}
-          <input id="mark_input" type="text" value={data.mark} onChange={handleChange} />
-        </label>
-        <label htmlFor="model_input">
-          Model:
-          {' '}
-          <input id="model_input" type="text" value={data.model} onChange={handleChange} />
-        </label>
-        <label htmlFor="year_input">
-          Year:
-          {' '}
-          <input id="year_input" type="number" value={data.year} onChange={handleChange} />
-        </label>
-        <label htmlFor="price_input">
-          Price:
-          {' '}
-          <input id="price_input" type="number" value={data.price} onChange={handleChange} />
-        </label>
-        <label htmlFor="image_input">
-          Car image:
-          {' '}
-          <input id="image_input" type="file" value={data.image} onChange={handleChange} />
-        </label>
-        <input type="submit" value="submit" />
-      </form>
-
-      <img src={data.imageFile} alt="car" />
+      <CreateCarForm clickHandler={handleClick} />
     </div>
   );
 };
