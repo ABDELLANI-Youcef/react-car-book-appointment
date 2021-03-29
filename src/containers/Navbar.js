@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { removeToken } from '../actions/index';
+import styles from '../styles/Navbar.module.css';
 
 const Navbar = ({ authToken, removeToken }) => {
   const history = useHistory();
@@ -14,24 +15,22 @@ const Navbar = ({ authToken, removeToken }) => {
 
   if (authToken.admin) {
     adminText = (
-      <p>
-        Welcome Admin;
-        <Link to="/create_car">Create a car?</Link>
-      </p>
+      <Link to="/create_car">Create a car</Link>
     );
   }
 
   if (authToken.authToken !== '') {
     return (
-      <div>
-        <button type="button" onClick={logout}>Log out</button>
+      <div className={styles.navbar}>
+        <Link to="/">HOME</Link>
         <Link to="/appointments">Appointments</Link>
         {adminText}
+        <button type="button" onClick={logout}>Log out</button>
       </div>
     );
   }
   return (
-    <div>
+    <div className={styles.navbar}>
       <Link to="/login">Log in</Link>
       <Link to="/signup">Sign up</Link>
     </div>
