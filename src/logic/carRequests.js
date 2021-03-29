@@ -1,4 +1,22 @@
-export const editCarRequest = async (auth, cardata, carId) => {
+export const carsListRequest = async (authToken, createCarsList) => {
+  try {
+    const options = {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: authToken,
+      },
+    };
+    const response = await fetch('http://[::1]:3000/cars', options);
+    const data = await response.json();
+    createCarsList(data);
+  } catch (error) {
+    createCarsList(error);
+  }
+};
+
+export const editCarRequest = async (authToken, cardata, carId, createCarsList) => {
   try {
     const body = {
       mark: cardata.mark,
@@ -11,18 +29,19 @@ export const editCarRequest = async (auth, cardata, carId) => {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        Authorization: auth.authToken,
+        Authorization: authToken,
       },
       body: JSON.stringify(body),
     };
     await fetch(`http://[::1]:3000/cars/${carId}`, options);
+    carsListRequest(authToken, createCarsList);
     return true;
   } catch (error) {
     return false;
   }
 };
 
-export const createCarRequest = async (auth, carsdata) => {
+export const createCarRequest = async (authToken, carsdata, createCarsList) => {
   try {
     const formData = new FormData();
     formData.append('image', carsdata.imageFile);
@@ -36,18 +55,19 @@ export const createCarRequest = async (auth, carsdata) => {
       method: 'POST',
       headers: {
 
-        Authorization: auth.authToken,
+        Authorization: authToken,
       },
       body: formData,
     };
     await fetch('http://[::1]:3000/cars/', options);
+    carsListRequest(authToken, createCarsList);
     return true;
   } catch (error) {
     return false;
   }
 };
 
-export const deleteCarRequest = async (authToken, carId) => {
+export const deleteCarRequest = async (authToken, carId, createCarsList) => {
   try {
     const options = {
       method: 'DELETE',
@@ -58,28 +78,9 @@ export const deleteCarRequest = async (authToken, carId) => {
       },
     };
     await fetch(`http://[::1]:3000/cars/${carId}`, options);
-
+    carsListRequest(authToken, createCarsList);
     return true;
   } catch (error) {
     return false;
-  }
-};
-
-export const carsListRequest = async (authToken, createCarsList) => {
-  try {
-    const options = {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: authToken,
-      },
-    };
-    const response = await fetch('http://[::1]:3000/cars', options);
-    const data = await response.json();
-
-    createCarsList(data);
-  } catch (error) {
-    createCarsList(error);
   }
 };

@@ -13,7 +13,7 @@ const Home = ({ authentication, carsList, createCarsList }) => {
   }, []);
 
   const deleteCar = (carId) => {
-    deleteCarRequest(authentication.authToken, carId);
+    deleteCarRequest(authentication.authToken, carId, createCarsList);
   };
 
   let carsTable = null;

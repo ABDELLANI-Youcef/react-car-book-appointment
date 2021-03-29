@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import CreateCarForm from '../components/CreateCarForm';
 import { createCarRequest } from '../logic/carRequests';
+import { createCarsList } from '../actions/index';
 
-const CreateCar = ({ auth }) => {
+const CreateCar = ({ auth, createCarsList }) => {
   const history = useHistory();
   const handleClick = (data) => {
     if (auth.admin) {
-      createCarRequest(auth, data);
+      createCarRequest(auth.authToken, data, createCarsList);
     }
     history.push('/');
   };
@@ -23,10 +24,15 @@ const CreateCar = ({ auth }) => {
 
 CreateCar.propTypes = {
   auth: PropTypes.objectOf(PropTypes.any).isRequired,
+  createCarsList: PropTypes.func.isRequired,
 };
 
 const mapStateToPorp = (state) => ({
   auth: state.authentication,
 });
 
-export default connect(mapStateToPorp)(CreateCar);
+const mapDispatchToProps = {
+  createCarsList,
+};
+
+export default connect(mapStateToPorp, mapDispatchToProps)(CreateCar);
