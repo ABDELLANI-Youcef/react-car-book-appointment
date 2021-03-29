@@ -1,7 +1,9 @@
+import styles from '../styles/Welcome.module.css';
+
 const Welcome = () => (
-  <div>
+  <div className={styles.container}>
     <p>
-      Welcome in Carsmania. In this application we simulate
+      Welcome in our site. In this application we simulate
       the process to book appointments of cars.
     </p>
     <p>
