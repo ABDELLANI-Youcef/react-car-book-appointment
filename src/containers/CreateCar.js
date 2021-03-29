@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import CreateCarForm from '../components/CreateCarForm';
 import { createCarRequest } from '../logic/carRequests';
 import { createCarsList } from '../actions/index';
+import styles from '../styles/Form.module.css';
 
 const CreateCar = ({ auth, createCarsList }) => {
   const history = useHistory();
@@ -15,8 +16,8 @@ const CreateCar = ({ auth, createCarsList }) => {
   };
 
   return (
-    <div>
-      {auth.username}
+    <div className={styles.container}>
+      <h1>Create a new car</h1>
       <CreateCarForm clickHandler={handleClick} />
     </div>
   );
