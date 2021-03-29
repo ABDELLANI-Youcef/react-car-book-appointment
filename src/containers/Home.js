@@ -25,7 +25,7 @@ const Home = ({ authentication, carsList, createCarsList }) => {
 
   return (
     <div>
-      <h1>Welcome Home</h1>
+      <h1>Welcome in Book Appointment to try car</h1>
       {carsTable}
 
     </div>

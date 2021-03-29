@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom';
 import { addAppointment } from '../actions/index';
 import AppointmentMakingForm from '../components/AppointmentMakingForm';
 import createAppointmentRequest from '../logic/appointmentRequest';
+import styles from '../styles/AppointmentMaking.module.css';
+import stylesForm from '../styles/Form.module.css';
 
 const AppointmentMaking = ({
   userAuth, location, addAppointment,
@@ -19,26 +21,46 @@ const AppointmentMaking = ({
 
   let image = null;
   if (car.id !== null) {
-    image = <img src={`http://[::1]:3000${car.image}`} alt="car" />;
+    image = <img src={`http://[::1]:3000${car.image}`} alt="car" className={styles.product_image} />;
   }
   return (
-    <div>
-      Welcome
-      {' '}
-      {userAuth.username}
-      . would you like to make a new appointment for
-      {' '}
-      {car.mark}
-      {' '}
-      {car.model}
-      {' '}
-      {car.year}
-      {' '}
-      with id =
-      {car.id}
-      .
-      <AppointmentMakingForm clickHandler={handleClick} />
-      {image}
+    <div className={styles.container}>
+      <div className={styles.product_details}>
+        {image}
+        <div>
+          <ul>
+            <li>
+              <span className={styles.details_title}>
+                Mark:
+              </span>
+              {car.mark}
+            </li>
+            <li>
+              <span className={styles.details_title}>
+                Model:
+              </span>
+              {car.model}
+            </li>
+            <li>
+              <span className={styles.details_title}>
+                Manufacturing year:
+              </span>
+              {car.year}
+            </li>
+            <li>
+              <span className={styles.details_title}>
+                The fees to try it:
+              </span>
+              {car.price}
+              $
+            </li>
+
+          </ul>
+        </div>
+      </div>
+      <div className={stylesForm.container}>
+        <AppointmentMakingForm clickHandler={handleClick} />
+      </div>
     </div>
   );
 };

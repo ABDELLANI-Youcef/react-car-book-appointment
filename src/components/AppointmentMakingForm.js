@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import styles from '../styles/Form.module.css';
 
 const AppointmentMakingForm = ({ clickHandler }) => {
   const [dateCity, setDateCity] = useState({
@@ -28,23 +29,21 @@ const AppointmentMakingForm = ({ clickHandler }) => {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <div>
+      <div className={styles.div_label}>
 
-        <label htmlFor="appointmentCity">
+        <label htmlFor="appointmentCity" className={styles.input_line}>
           the city:
-          {' '}
           <input id="appointmentCity" type="text" value={dateCity.city} onChange={handleChange} />
         </label>
       </div>
-      <div>
-        <label htmlFor="appointmentDate">
+      <div className={styles.div_label}>
+        <label htmlFor="appointmentDate" className={styles.input_line}>
           date:
-          {' '}
           <input id="appointmentDate" type="date" value={dateCity.date} onChange={handleChange} />
         </label>
       </div>
-      <div>
-        <input type="submit" value="Submit" />
+      <div className={styles.div_label}>
+        <input type="submit" value="Submit" className={styles.submit} />
       </div>
     </form>
   );
