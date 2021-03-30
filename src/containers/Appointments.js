@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import styles from '../styles/Home.module.css';
 
 const Appointments = ({ appointments, cars }) => {
   const correspondCar = (carId) => {
@@ -10,15 +11,42 @@ const Appointments = ({ appointments, cars }) => {
     return cars[i];
   };
   return (
-    <div>
+    <div className={styles.container}>
+      <h1>Your already reserved appointments</h1>
       {appointments.map((a) => {
         const car = correspondCar(a.car_id);
         return (
-          <p key={a.id}>
-            {a.city}
-            {' '}
-            {car.mark}
-          </p>
+          <div key={car.id}>
+
+            <div key={car.id} className={styles.product_item}>
+
+              <img src={`http://[::1]:3000${car.image}`} alt={`${car.mark} ${car.model}`} className={styles.product_image} />
+              <div>
+                <div className={styles.product_detail}>
+                  <span className={styles.detail_entry}>Mark:</span>
+                  {car.mark}
+                </div>
+                <div className={styles.product_detail}>
+                  <span className={styles.detail_entry}>Model:</span>
+                  {car.model}
+                </div>
+                <div className={styles.product_detail}>
+                  <span className={styles.detail_entry}>Year:</span>
+                  {car.year}
+                </div>
+                <div className={styles.product_detail}>
+                  <span className={styles.detail_entry}>City of reservation:</span>
+                  {a.city}
+                </div>
+                <div className={styles.product_detail}>
+                  <span className={styles.detail_entry}>Date of reservation:</span>
+                  {a.date}
+                </div>
+
+              </div>
+            </div>
+
+          </div>
         );
       })}
     </div>
