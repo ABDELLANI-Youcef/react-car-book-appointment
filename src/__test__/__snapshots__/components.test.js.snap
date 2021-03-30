@@ -1,0 +1,426 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render AppointmentMakingForm correctly 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <div
+    className="div_label"
+  >
+    <label
+      className="input_line"
+      htmlFor="appointmentCity"
+    >
+      the city:
+      <input
+        id="appointmentCity"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </label>
+  </div>
+  <div
+    className="div_label"
+  >
+    <label
+      className="input_line"
+      htmlFor="appointmentDate"
+    >
+      date:
+      <input
+        id="appointmentDate"
+        onChange={[Function]}
+        type="date"
+        value=""
+      />
+    </label>
+  </div>
+  <div
+    className="div_label"
+  >
+    <input
+      className="submit"
+      type="submit"
+      value="Submit"
+    />
+  </div>
+</form>
+`;
+
+exports[`should render CarsTable correctly 1`] = `
+<div>
+  <div
+    className="product_item"
+  >
+    <a
+      href="/make-appointment"
+      onClick={[Function]}
+    >
+      <img
+        alt="Bugatti Chiron"
+        className="product_image"
+        src="http://[::1]:3000img/test.png"
+      />
+    </a>
+    <div>
+      <div
+        className="product_detail"
+      >
+        <span
+          className="detail_entry"
+        >
+          Mark:
+        </span>
+        Bugatti
+      </div>
+      <div
+        className="product_detail"
+      >
+        <span
+          className="detail_entry"
+        >
+          Model:
+        </span>
+        Chiron
+      </div>
+      <div
+        className="product_detail"
+      >
+        <span
+          className="detail_entry"
+        >
+          Year:
+        </span>
+        2020
+      </div>
+      <div
+        className="product_detail"
+      >
+        <button
+          data-car-id={1}
+          onClick={[Function]}
+          type="button"
+        >
+          Delete
+        </button>
+        <a
+          href="/edit_car"
+          onClick={[Function]}
+        >
+          edit the car
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render CreateCarForm correctly 1`] = `
+<form
+  className="form_div"
+  onSubmit={[Function]}
+>
+  <div
+    className="div_label"
+  >
+    <label
+      className="input_line"
+      htmlFor="mark_input"
+    >
+      Mark:
+       
+      <input
+        id="mark_input"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </label>
+  </div>
+  <div
+    className="div_label"
+  >
+    <label
+      className="input_line"
+      htmlFor="model_input"
+    >
+      Model:
+       
+      <input
+        id="model_input"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </label>
+  </div>
+  <div
+    className="div_label"
+  >
+    <label
+      className="input_line"
+      htmlFor="year_input"
+    >
+      Year:
+       
+      <input
+        id="year_input"
+        onChange={[Function]}
+        type="number"
+        value={2021}
+      />
+    </label>
+  </div>
+  <div
+    className="div_label"
+  >
+    <label
+      className="input_line"
+      htmlFor="price_input"
+    >
+      Price:
+       
+      <input
+        id="price_input"
+        onChange={[Function]}
+        type="number"
+        value={0}
+      />
+    </label>
+  </div>
+  <div
+    className="div_label"
+  >
+    <label
+      className="input_line"
+      htmlFor="image_input"
+    >
+      Car image:
+       
+      <input
+        id="image_input"
+        onChange={[Function]}
+        type="file"
+        value=""
+      />
+    </label>
+  </div>
+  <input
+    className="submit"
+    type="submit"
+    value="submit"
+  />
+</form>
+`;
+
+exports[`should render EditCarForm correctly 1`] = `
+<form
+  className="form_div"
+  onSubmit={[Function]}
+>
+  <div
+    className="div_label"
+  >
+    <label
+      className="input_line"
+      htmlFor="mark_edit"
+    >
+      mark:
+       
+      <input
+        id="mark_edit"
+        onChange={[Function]}
+        type="text"
+        value="Bugatti"
+      />
+    </label>
+  </div>
+  <div
+    className="div_label"
+  >
+    <label
+      className="input_line"
+      htmlFor="model_edit"
+    >
+      model:
+       
+      <input
+        id="model_edit"
+        onChange={[Function]}
+        type="text"
+        value="Chiron"
+      />
+    </label>
+  </div>
+  <div
+    className="div_label"
+  >
+    <label
+      className="input_line"
+      htmlFor="year_edit"
+    >
+      year:
+       
+      <input
+        id="year_edit"
+        onChange={[Function]}
+        type="number"
+        value={2020}
+      />
+    </label>
+  </div>
+  <div
+    className="div_label"
+  >
+    <label
+      className="input_line"
+      htmlFor="price_edit"
+    >
+      Price:
+       
+      <input
+        id="price_edit"
+        onChange={[Function]}
+        type="number"
+        value={500}
+      />
+    </label>
+  </div>
+  <input
+    className="submit"
+    type="submit"
+    value="submit"
+  />
+</form>
+`;
+
+exports[`should render LoginForm correctly 1`] = `
+<form
+  className="form_div"
+  onSubmit={[Function]}
+>
+  <div
+    className="div_label"
+  >
+    <label
+      className="input_line"
+      htmlFor="email"
+    >
+      E-mail:
+       
+      <input
+        id="email"
+        onChange={[Function]}
+        type="email"
+        value=""
+      />
+    </label>
+  </div>
+  <div
+    className="div_label"
+  >
+    <label
+      className="input_line"
+      htmlFor="password"
+    >
+      Password:
+       
+      <input
+        id="password"
+        onChange={[Function]}
+        type="password"
+        value=""
+      />
+    </label>
+  </div>
+  <input
+    className="submit"
+    type="submit"
+    value="submit"
+  />
+</form>
+`;
+
+exports[`should render SignUpForm correctly 1`] = `
+<form
+  className="form_div"
+  onSubmit={[Function]}
+>
+  <div
+    className="div_label"
+  >
+    <label
+      className="input_line"
+      htmlFor="username"
+    >
+      Username:
+       
+      <input
+        id="username"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </label>
+  </div>
+  <div
+    className="div_label"
+  >
+    <label
+      className="input_line"
+      htmlFor="email"
+    >
+      E-mail:
+       
+      <input
+        id="email"
+        onChange={[Function]}
+        type="email"
+        value=""
+      />
+    </label>
+  </div>
+  <div
+    className="div_label"
+  >
+    <label
+      className="input_line"
+      htmlFor="password"
+    >
+      Password:
+       
+      <input
+        id="password"
+        onChange={[Function]}
+        type="password"
+        value=""
+      />
+    </label>
+  </div>
+  <div
+    className="div_label"
+  >
+    <label
+      className="input_line"
+      htmlFor="confirmPassword"
+    >
+      Confirm password:
+       
+      <input
+        id="confirmPassword"
+        onChange={[Function]}
+        type="password"
+        value=""
+      />
+    </label>
+  </div>
+  <input
+    className="submit"
+    type="submit"
+    value="submit"
+  />
+</form>
+`;
+
+exports[`should render the welcome page correctly 1`] = `[Function]`;
