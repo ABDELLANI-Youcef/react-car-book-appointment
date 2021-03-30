@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { createCarsList } from '../actions/index';
 import { carsListRequest, deleteCarRequest } from '../logic/carRequests';
 import CarsTable from '../components/CarsTable';
+import styles from '../styles/Home.module.css';
 
 const Home = ({ authentication, carsList, createCarsList }) => {
   useEffect(() => {
@@ -24,10 +25,9 @@ const Home = ({ authentication, carsList, createCarsList }) => {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Welcome in Book Appointment to try car</h1>
       {carsTable}
-
     </div>
   );
 };

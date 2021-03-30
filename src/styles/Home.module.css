@@ -1,0 +1,35 @@
+.container {
+  margin-top: 20px;
+  padding: 15px;
+}
+
+.container h1 {
+  text-align: center;
+}
+
+.product_item {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.product_item a {
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 10px;
+  color: black;
+}
+
+.product_image {
+  width: 300px;
+  height: 300px;
+  padding-right: 20px;
+}
+
+.product_detail {
+  margin-bottom: 10px;
+}
+
+.detail_entry {
+  font-weight: bold;
+  margin-right: 10px;
+}
