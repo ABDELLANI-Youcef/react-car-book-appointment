@@ -20,7 +20,7 @@ const Appointments = ({ appointments, cars }) => {
 
             <div key={car.id} className={styles.product_item}>
 
-              <img src={`http://[::1]:3000${car.image}`} alt={`${car.mark} ${car.model}`} className={styles.product_image} />
+              <img src={`https://youcef-cars-book-appointment.herokuapp.com${car.image}`} alt={`${car.mark} ${car.model}`} className={styles.product_image} />
               <div>
                 <div className={styles.product_detail}>
                   <span className={styles.detail_entry}>Mark:</span>

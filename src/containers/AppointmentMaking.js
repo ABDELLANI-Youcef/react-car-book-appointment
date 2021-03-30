@@ -21,7 +21,7 @@ const AppointmentMaking = ({
 
   let image = null;
   if (car.id !== null) {
-    image = <img src={`http://[::1]:3000${car.image}`} alt="car" className={styles.product_image} />;
+    image = <img src={`https://youcef-cars-book-appointment.herokuapp.com${car.image}`} alt="car" className={styles.product_image} />;
   }
   return (
     <div className={styles.container}>

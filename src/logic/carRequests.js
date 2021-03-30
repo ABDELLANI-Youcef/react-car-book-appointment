@@ -8,7 +8,7 @@ export const carsListRequest = async (authToken, createCarsList) => {
         Authorization: authToken,
       },
     };
-    const response = await fetch('http://[::1]:3000/cars', options);
+    const response = await fetch('https://youcef-cars-book-appointment.herokuapp.com/cars', options);
     const data = await response.json();
     createCarsList(data);
   } catch (error) {
@@ -33,7 +33,7 @@ export const editCarRequest = async (authToken, cardata, carId, createCarsList) 
       },
       body: JSON.stringify(body),
     };
-    await fetch(`http://[::1]:3000/cars/${carId}`, options);
+    await fetch(`https://youcef-cars-book-appointment.herokuapp.com/cars/${carId}`, options);
     carsListRequest(authToken, createCarsList);
     return true;
   } catch (error) {
@@ -59,7 +59,7 @@ export const createCarRequest = async (authToken, carsdata, createCarsList) => {
       },
       body: formData,
     };
-    await fetch('http://[::1]:3000/cars/', options);
+    await fetch('https://youcef-cars-book-appointment.herokuapp.com/cars/', options);
     carsListRequest(authToken, createCarsList);
     return true;
   } catch (error) {
@@ -77,7 +77,7 @@ export const deleteCarRequest = async (authToken, carId, createCarsList) => {
         Authorization: authToken,
       },
     };
-    await fetch(`http://[::1]:3000/cars/${carId}`, options);
+    await fetch(`https://youcef-cars-book-appointment.herokuapp.com/cars/${carId}`, options);
     carsListRequest(authToken, createCarsList);
     return true;
   } catch (error) {

@@ -18,7 +18,7 @@ const CarsTable = ({ cars, admin, clickHandler }) => {
     return (
       <div key={e.id} className={styles.product_item}>
         <Link to={{ pathname: '/make-appointment', state: { car: e } }}>
-          <img src={`http://[::1]:3000${e.image}`} alt={`${e.mark} ${e.model}`} className={styles.product_image} />
+          <img src={`https://youcef-cars-book-appointment.herokuapp.com${e.image}`} alt={`${e.mark} ${e.model}`} className={styles.product_image} />
         </Link>
         <div>
           <div className={styles.product_detail}>

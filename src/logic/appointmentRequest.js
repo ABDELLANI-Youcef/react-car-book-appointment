@@ -13,7 +13,7 @@ const createAppointmentRequest = async (authToken, carId, dateCity, addAppointme
       },
       body: JSON.stringify(body),
     };
-    const response = await fetch(`http://[::1]:3000/cars/${carId}/appointments`, options);
+    const response = await fetch(`https://youcef-cars-book-appointment.herokuapp.com/cars/${carId}/appointments`, options);
     const data = await response.json();
     addAppointment(data);
     return true;
