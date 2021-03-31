@@ -47,6 +47,10 @@ To build this application we used:
 - Edit an existing car;
 - Delete an existing car.
 
+The Account of the admin is:
+- email: youcefabdellani@gmail.com
+- password: 123456
+
 ## How to use the application
 
 In this Application, on the home page, the user gets the informations about the COVID-19 statistics (cases, deaths, and recoveries). The user can use the filter form to change the results to be shown. If the user wants to get more details about a specific country, he can click on the name of that country in order to access a page of details. There he finds the information about the country:
