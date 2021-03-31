@@ -31,7 +31,7 @@ const signUp = async (createToken, userdata) => {
   }
 };
 
-const login = async (createToken, createAppointmentsList, userdata) => {
+const login = async (createToken, createAppointmentsList, userdata, setStatus) => {
   const body = {
     email: userdata.email,
     password: userdata.password,
@@ -48,6 +48,10 @@ const login = async (createToken, createAppointmentsList, userdata) => {
 
     const response = await fetch(`${URL}/auth/login`, options);
     const data = await response.json();
+    if (response.status !== 200) {
+      throw new Error('Failed to login');
+    }
+    setStatus(200);
     const auth = {
       username: data.username,
       email: data.email,
@@ -57,7 +61,7 @@ const login = async (createToken, createAppointmentsList, userdata) => {
     createToken(auth);
     createAppointmentsList(data.appointments);
   } catch (error) {
-    createToken(error);
+    setStatus(401);
   }
 };
 
