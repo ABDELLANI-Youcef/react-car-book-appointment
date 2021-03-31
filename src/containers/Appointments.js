@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from '../styles/Home.module.css';
+import URL from '../logic/url';
 
 const Appointments = ({ appointments, cars }) => {
   const correspondCar = (carId) => {
@@ -20,7 +21,7 @@ const Appointments = ({ appointments, cars }) => {
 
             <div key={car.id} className={styles.product_item}>
 
-              <img src={`https://youcef-cars-book-appointment.herokuapp.com${car.image}`} alt={`${car.mark} ${car.model}`} className={styles.product_image} />
+              <img src={`${URL}${car.image}`} alt={`${car.mark} ${car.model}`} className={styles.product_image} />
               <div>
                 <div className={styles.product_detail}>
                   <span className={styles.detail_entry}>Mark:</span>

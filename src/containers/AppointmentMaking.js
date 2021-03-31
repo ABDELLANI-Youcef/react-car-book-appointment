@@ -6,6 +6,7 @@ import AppointmentMakingForm from '../components/AppointmentMakingForm';
 import createAppointmentRequest from '../logic/appointmentRequest';
 import styles from '../styles/AppointmentMaking.module.css';
 import stylesForm from '../styles/Form.module.css';
+import URL from '../logic/url';
 
 const AppointmentMaking = ({
   userAuth, location, addAppointment,
@@ -21,7 +22,7 @@ const AppointmentMaking = ({
 
   let image = null;
   if (car.id !== null) {
-    image = <img src={`https://youcef-cars-book-appointment.herokuapp.com${car.image}`} alt="car" className={styles.product_image} />;
+    image = <img src={`${URL}${car.image}`} alt="car" className={styles.product_image} />;
   }
   return (
     <div className={styles.container}>

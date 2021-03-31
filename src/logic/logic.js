@@ -1,3 +1,5 @@
+import URL from './url';
+
 const signUp = async (createToken, userdata) => {
   const body = {
     name: userdata.username,
@@ -15,7 +17,7 @@ const signUp = async (createToken, userdata) => {
       body: JSON.stringify(body),
     };
 
-    const response = await fetch('https://youcef-cars-book-appointment.herokuapp.com/signup', options);
+    const response = await fetch(`${URL}/signup`, options);
     const data = await response.json();
 
     const auth = {
@@ -44,7 +46,7 @@ const login = async (createToken, createAppointmentsList, userdata) => {
       body: JSON.stringify(body),
     };
 
-    const response = await fetch('https://youcef-cars-book-appointment.herokuapp.com/auth/login', options);
+    const response = await fetch(`${URL}/auth/login`, options);
     const data = await response.json();
     const auth = {
       username: data.username,
