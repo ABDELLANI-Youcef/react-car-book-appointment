@@ -13,7 +13,12 @@ const authenticationReducer = (state = defaultState, action) => {
       return action.payload;
 
     case REMOVE_TOKEN:
-      return defaultState;
+      return {
+        username: '',
+        email: '',
+        authToken: '',
+        admin: false,
+      };
 
     default:
       return state;
