@@ -60,7 +60,7 @@ exports[`should render CarsTable correctly 1`] = `
       <img
         alt="Bugatti Chiron"
         className="product_image"
-        src="https://youcef-cars-book-appointment.herokuapp.comimg/test.png"
+        src="http://[::1]:3000img/test.png"
       />
     </a>
     <div>
