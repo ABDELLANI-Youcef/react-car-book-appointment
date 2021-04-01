@@ -35,6 +35,11 @@ const CarsTable = ({ cars, admin, clickHandler }) => {
             {e.year}
           </div>
           <div className={styles.product_detail}>
+            <Link to={{ pathname: '/make-appointment', state: { car: e } }}>
+              Reserve an appointment to try this car
+            </Link>
+          </div>
+          <div className={styles.product_detail}>
             {deleteTD}
             {editTD}
           </div>
