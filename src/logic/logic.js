@@ -31,7 +31,7 @@ const signUp = async (createToken, userdata) => {
   }
 };
 
-const login = async (createToken, createAppointmentsList, userdata, setStatus) => {
+const login = async (createToken, userdata, setStatus) => {
   const body = {
     email: userdata.email,
     password: userdata.password,
@@ -59,7 +59,6 @@ const login = async (createToken, createAppointmentsList, userdata, setStatus) =
       admin: data.admin,
     };
     createToken(auth);
-    createAppointmentsList(data.appointments);
   } catch (error) {
     setStatus(401);
   }

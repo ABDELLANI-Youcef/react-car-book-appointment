@@ -2,15 +2,15 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { login } from '../logic/logic';
-import { createToken, createAppointmentsList } from '../actions/index';
+import { createToken } from '../actions/index';
 import LoginForm from '../components/LoginForm';
 import styles from '../styles/Form.module.css';
 
-const Login = ({ createToken, createAppointmentsList, history }) => {
+const Login = ({ createToken, history }) => {
   const [status, setStatus] = useState(0);
 
   const handleSubmit = (data) => {
-    login(createToken, createAppointmentsList, data, setStatus);
+    login(createToken, data, setStatus);
   };
 
   if (status === 200) {
@@ -34,13 +34,11 @@ const Login = ({ createToken, createAppointmentsList, history }) => {
 
 Login.propTypes = {
   createToken: PropTypes.func.isRequired,
-  createAppointmentsList: PropTypes.func.isRequired,
   history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 const mapDispatchToProp = {
   createToken,
-  createAppointmentsList,
 };
 
 export default connect(null, mapDispatchToProp)(Login);
