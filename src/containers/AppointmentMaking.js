@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { addAppointment } from '../actions/index';
 import AppointmentMakingForm from '../components/AppointmentMakingForm';
-import createAppointmentRequest from '../logic/appointmentRequest';
+import { createAppointmentRequest } from '../logic/appointmentRequest';
 import styles from '../styles/AppointmentMaking.module.css';
 import stylesForm from '../styles/Form.module.css';
 import URL from '../logic/url';

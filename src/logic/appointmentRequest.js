@@ -1,6 +1,6 @@
 import URL from './url';
 
-const createAppointmentRequest = async (authToken, carId, dateCity, addAppointment) => {
+export const createAppointmentRequest = async (authToken, carId, dateCity, addAppointment) => {
   try {
     const body = {
       city: dateCity.city,
@@ -24,4 +24,21 @@ const createAppointmentRequest = async (authToken, carId, dateCity, addAppointme
   }
 };
 
-export default createAppointmentRequest;
+export const appointmentsListRequest = async (authToken, createAppointmentsList) => {
+  try {
+    const options = {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: authToken,
+      },
+    };
+    const response = await fetch(`${URL}/appointments`, options);
+    const data = await response.json();
+    createAppointmentsList(data);
+    return true;
+  } catch (error) {
+    return false;
+  }
+};
