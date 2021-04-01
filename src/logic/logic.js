@@ -17,7 +17,7 @@ const signUp = async (createToken, userdata) => {
       body: JSON.stringify(body),
     };
 
-    const response = await fetch(`${URL}/signup`, options);
+    const response = await fetch(`${URL}/users`, options);
     const data = await response.json();
 
     const auth = {
@@ -46,7 +46,7 @@ const login = async (createToken, createAppointmentsList, userdata, setStatus) =
       body: JSON.stringify(body),
     };
 
-    const response = await fetch(`${URL}/auth/login`, options);
+    const response = await fetch(`${URL}/authentication`, options);
     const data = await response.json();
     if (response.status !== 200) {
       throw new Error('Failed to login');
