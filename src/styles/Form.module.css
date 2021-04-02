@@ -21,6 +21,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 70vw;
 }
 
 .div_label {
