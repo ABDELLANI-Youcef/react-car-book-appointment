@@ -4,14 +4,23 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from '../styles/Home.module.css';
 import URL from '../logic/url';
-import { createAppointmentsList } from '../actions/index';
+import { createAppointmentsList, createCarsList } from '../actions/index';
+import { carsListRequest } from '../logic/carRequests';
 import { appointmentsListRequest } from '../logic/appointmentRequest';
 
 const Appointments = ({
-  authentication, appointments, cars, createAppointmentsList,
+  authentication, appointments, cars, createAppointmentsList, createCarsList,
 }) => {
+  useEffect(() => {
+    if (cars.length === 0) {
+      carsListRequest(authentication.authToken, createCarsList);
+    }
+  }, []);
   const [page, setPage] = useState(0);
   useEffect(() => {
+    if (cars.length === 0) {
+      carsListRequest(authentication.authToken, createCarsList);
+    }
     appointmentsListRequest(authentication.authToken, createAppointmentsList, page + 1);
   }, [page]);
 
@@ -20,7 +29,7 @@ const Appointments = ({
     setPage(selected);
   };
 
-  if (appointments.size === 0) {
+  if (appointments.size === 0 || cars.length === 0) {
     return null;
   }
   const count = Math.floor((appointments.size - 1) / 6) + 1;
@@ -100,6 +109,8 @@ Appointments.propTypes = {
   appointments: PropTypes.objectOf(PropTypes.any).isRequired,
   cars: PropTypes.arrayOf(PropTypes.any).isRequired,
   createAppointmentsList: PropTypes.func.isRequired,
+  createCarsList: PropTypes.func.isRequired,
+
 };
 
 const mapStateToProp = (state) => ({
@@ -110,6 +121,7 @@ const mapStateToProp = (state) => ({
 
 const mapDispatchToProps = {
   createAppointmentsList,
+  createCarsList,
 };
 
 export default connect(mapStateToProp, mapDispatchToProps)(Appointments);

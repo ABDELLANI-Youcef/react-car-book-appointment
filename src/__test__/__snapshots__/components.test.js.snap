@@ -49,7 +49,9 @@ exports[`should render AppointmentMakingForm correctly 1`] = `
 `;
 
 exports[`should render CarsTable correctly 1`] = `
-<div>
+<div
+  className="product_list"
+>
   <div
     className="product_item"
   >
@@ -63,7 +65,9 @@ exports[`should render CarsTable correctly 1`] = `
         src="http://[::1]:3000img/test.png"
       />
     </a>
-    <div>
+    <div
+      className="product_informations"
+    >
       <div
         className="product_detail"
       >
