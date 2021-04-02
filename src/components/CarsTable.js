@@ -49,7 +49,7 @@ const CarsTable = ({ cars, admin, clickHandler }) => {
   });
 
   return (
-    <div>
+    <div className={styles.product_list}>
       { k }
     </div>
   );
