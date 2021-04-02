@@ -18,13 +18,12 @@ const Appointments = ({
   const handlePageClick = (data) => {
     const { selected } = data;
     setPage(selected);
-    // appointmentsListRequest(authentication.authToken, createAppointmentsList, page + 1);
   };
 
   if (appointments.size === 0) {
     return null;
   }
-  const count = Math.floor((appointments.size + 1) / 2);
+  const count = Math.floor((appointments.size - 1) / 6) + 1;
   const pagination = (
     <ReactPaginate
       previousLabel="previous"
@@ -53,42 +52,44 @@ const Appointments = ({
   return (
     <div className={styles.container}>
       <h1>Your already reserved appointments</h1>
-      {appointments.appointments.map((a) => {
-        const car = correspondCar(a.car_id);
-        return (
-          <div key={car.id}>
+      <div className={styles.product_list}>
+        {appointments.appointments.map((a) => {
+          const car = correspondCar(a.car_id);
+          return (
+            <div key={a.id}>
 
-            <div key={car.id} className={styles.product_item}>
+              <div className={styles.product_item}>
 
-              <img src={`${URL}${car.image}`} alt={`${car.mark} ${car.model}`} className={styles.product_image} />
-              <div>
-                <div className={styles.product_detail}>
-                  <span className={styles.detail_entry}>Mark:</span>
-                  {car.mark}
-                </div>
-                <div className={styles.product_detail}>
-                  <span className={styles.detail_entry}>Model:</span>
-                  {car.model}
-                </div>
-                <div className={styles.product_detail}>
-                  <span className={styles.detail_entry}>Year:</span>
-                  {car.year}
-                </div>
-                <div className={styles.product_detail}>
-                  <span className={styles.detail_entry}>City of reservation:</span>
-                  {a.city}
-                </div>
-                <div className={styles.product_detail}>
-                  <span className={styles.detail_entry}>Date of reservation:</span>
-                  {a.date}
-                </div>
+                <img src={`${URL}${car.image}`} alt={`${car.mark} ${car.model}`} className={styles.product_image} />
+                <div>
+                  <div className={styles.product_detail}>
+                    <span className={styles.detail_entry}>Mark:</span>
+                    {car.mark}
+                  </div>
+                  <div className={styles.product_detail}>
+                    <span className={styles.detail_entry}>Model:</span>
+                    {car.model}
+                  </div>
+                  <div className={styles.product_detail}>
+                    <span className={styles.detail_entry}>Year:</span>
+                    {car.year}
+                  </div>
+                  <div className={styles.product_detail}>
+                    <span className={styles.detail_entry}>City of reservation:</span>
+                    {a.city}
+                  </div>
+                  <div className={styles.product_detail}>
+                    <span className={styles.detail_entry}>Date of reservation:</span>
+                    {a.date}
+                  </div>
 
+                </div>
               </div>
-            </div>
 
-          </div>
-        );
-      })}
+            </div>
+          );
+        })}
+      </div>
       {pagination}
     </div>
   );
