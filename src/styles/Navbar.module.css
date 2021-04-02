@@ -1,6 +1,7 @@
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  flex-wrap: wrap;
   align-items: center;
   padding: 10px;
   background-color: rgb(91, 218, 91);
@@ -17,4 +18,15 @@
 
 .navbar button {
   font-weight: bold;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar {
+    flex-direction: column;
+  }
+  
+  .navbar a,
+  .navbar a:hover {
+    margin-bottom: 30px;
+  }
 }
