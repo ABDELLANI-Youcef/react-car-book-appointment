@@ -24,7 +24,7 @@
   .navbar {
     flex-direction: column;
   }
-  
+
   .navbar a,
   .navbar a:hover {
     margin-bottom: 30px;
