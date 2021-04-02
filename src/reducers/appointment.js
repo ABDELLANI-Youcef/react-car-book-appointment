@@ -1,14 +1,11 @@
-import { CREATE_APPOINTMENTS_LIST, ADD_APPOINTMENT } from '../actions/index';
+import { CREATE_APPOINTMENTS_LIST } from '../actions/index';
 
-const defaultState = [];
+const defaultState = { appointments: [], size: -1 };
 
 const appointmentsReducer = (state = defaultState, action) => {
   switch (action.type) {
     case CREATE_APPOINTMENTS_LIST:
       return action.payload;
-
-    case ADD_APPOINTMENT:
-      return [...state, action.payload];
 
     default:
       return state;

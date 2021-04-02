@@ -1,4 +1,5 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import ReactPaginate from 'react-paginate';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from '../styles/Home.module.css';
@@ -9,15 +10,38 @@ import { appointmentsListRequest } from '../logic/appointmentRequest';
 const Appointments = ({
   authentication, appointments, cars, createAppointmentsList,
 }) => {
+  const [page, setPage] = useState(0);
   useEffect(() => {
-    if (appointments.length === 0) {
-      appointmentsListRequest(authentication.authToken, createAppointmentsList);
-    }
-  }, []);
+    appointmentsListRequest(authentication.authToken, createAppointmentsList, page + 1);
+  }, [page]);
 
-  if (appointments.length === 0) {
+  const handlePageClick = (data) => {
+    const { selected } = data;
+    setPage(selected);
+    // appointmentsListRequest(authentication.authToken, createAppointmentsList, page + 1);
+  };
+
+  if (appointments.size === 0) {
     return null;
   }
+  const count = Math.floor((appointments.size + 1) / 2);
+  const pagination = (
+    <ReactPaginate
+      previousLabel="previous"
+      nextLabel="next"
+      breakLabel="..."
+      breakClassName="break-me"
+      pageCount={count}
+      initialPage={0}
+      marginPagesDisplayed={2}
+      pageRangeDisplayed={5}
+      onPageChange={handlePageClick}
+      containerClassName={styles.pagination}
+      subContainerClassName="pages pagination"
+      activeClassName={styles.active}
+      pageClassName={styles.page}
+    />
+  );
 
   const correspondCar = (carId) => {
     let i = 0;
@@ -29,7 +53,7 @@ const Appointments = ({
   return (
     <div className={styles.container}>
       <h1>Your already reserved appointments</h1>
-      {appointments.map((a) => {
+      {appointments.appointments.map((a) => {
         const car = correspondCar(a.car_id);
         return (
           <div key={car.id}>
@@ -65,13 +89,15 @@ const Appointments = ({
           </div>
         );
       })}
+      {pagination}
+      {page}
     </div>
   );
 };
 
 Appointments.propTypes = {
   authentication: PropTypes.objectOf(PropTypes.any).isRequired,
-  appointments: PropTypes.arrayOf(PropTypes.any).isRequired,
+  appointments: PropTypes.objectOf(PropTypes.any).isRequired,
   cars: PropTypes.arrayOf(PropTypes.any).isRequired,
   createAppointmentsList: PropTypes.func.isRequired,
 };

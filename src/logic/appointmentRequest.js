@@ -1,6 +1,6 @@
 import URL from './url';
 
-export const createAppointmentRequest = async (authToken, carId, dateCity, addAppointment) => {
+export const createAppointmentRequest = async (authToken, carId, dateCity) => {
   try {
     const body = {
       city: dateCity.city,
@@ -15,16 +15,14 @@ export const createAppointmentRequest = async (authToken, carId, dateCity, addAp
       },
       body: JSON.stringify(body),
     };
-    const response = await fetch(`${URL}/cars/${carId}/appointments`, options);
-    const data = await response.json();
-    addAppointment(data);
+    await fetch(`${URL}/cars/${carId}/appointments`, options);
     return true;
   } catch (error) {
     return false;
   }
 };
 
-export const appointmentsListRequest = async (authToken, createAppointmentsList) => {
+export const appointmentsListRequest = async (authToken, createAppointmentsList, page) => {
   try {
     const options = {
       method: 'GET',
@@ -34,8 +32,9 @@ export const appointmentsListRequest = async (authToken, createAppointmentsList)
         Authorization: authToken,
       },
     };
-    const response = await fetch(`${URL}/appointments`, options);
+    const response = await fetch(`${URL}/appointments?page=${page}`, options);
     const data = await response.json();
+
     createAppointmentsList(data);
     return true;
   } catch (error) {
