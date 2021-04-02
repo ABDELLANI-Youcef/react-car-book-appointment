@@ -21,7 +21,7 @@ const CarsTable = ({ cars, admin, clickHandler }) => {
         <Link to={{ pathname: '/make-appointment', state: { car: e } }}>
           <img src={`${URL}${e.image}`} alt={`${e.mark} ${e.model}`} className={styles.product_image} />
         </Link>
-        <div>
+        <div className={styles.product_informations}>
           <div className={styles.product_detail}>
             <span className={styles.detail_entry}>Mark:</span>
             {e.mark}

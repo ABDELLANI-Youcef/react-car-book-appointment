@@ -34,3 +34,19 @@
   font-weight: bold;
   margin-right: 10px;
 }
+
+@media screen and (max-width: 500px) {
+  .product_item {
+    flex-direction: column;
+  }
+
+  .product_image {
+    margin-bottom: 20px;
+  }
+
+  .product_informations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
