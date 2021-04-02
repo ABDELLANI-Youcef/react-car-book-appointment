@@ -8,16 +8,12 @@
 }
 
 html {
-  min-width: 22rem;
-  min-height: 44rem;
   display: block;
   font-family: 'Raleway', sans-serif;
 }
 
 body {
   width: 100%;
-  min-height: 100vh;
-  min-width: 22rem;
   display: block;
   background-color: rgb(226, 229, 226);
   margin: 0;

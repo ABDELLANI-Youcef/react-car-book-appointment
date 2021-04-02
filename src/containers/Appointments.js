@@ -90,7 +90,6 @@ const Appointments = ({
         );
       })}
       {pagination}
-      {page}
     </div>
   );
 };
