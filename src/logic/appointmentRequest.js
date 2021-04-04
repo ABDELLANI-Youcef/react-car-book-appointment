@@ -3,6 +3,7 @@ import URL from './url';
 export const createAppointmentRequest = async (authToken, carId, dateCity) => {
   try {
     const body = {
+      car_id: carId,
       city: dateCity.city,
       date: dateCity.date,
     };
@@ -15,7 +16,7 @@ export const createAppointmentRequest = async (authToken, carId, dateCity) => {
       },
       body: JSON.stringify(body),
     };
-    await fetch(`${URL}/cars/${carId}/appointments`, options);
+    await fetch(`${URL}/appointments`, options);
     return true;
   } catch (error) {
     return false;
