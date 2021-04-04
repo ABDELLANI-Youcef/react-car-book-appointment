@@ -31,7 +31,7 @@ const signUp = async (createToken, userdata) => {
   }
 };
 
-const login = async (createToken, userdata, setStatus) => {
+const login = async (createToken, userdata) => {
   const body = {
     email: userdata.email,
     password: userdata.password,
@@ -51,7 +51,6 @@ const login = async (createToken, userdata, setStatus) => {
     if (response.status !== 200) {
       throw new Error('Failed to login');
     }
-    setStatus(200);
     const auth = {
       username: data.username,
       email: data.email,
@@ -59,8 +58,9 @@ const login = async (createToken, userdata, setStatus) => {
       admin: data.admin,
     };
     createToken(auth);
+    return true;
   } catch (error) {
-    setStatus(401);
+    return false;
   }
 };
 

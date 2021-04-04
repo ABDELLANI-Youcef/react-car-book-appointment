@@ -9,17 +9,18 @@ import styles from '../styles/Form.module.css';
 const Login = ({ createToken, history }) => {
   const [status, setStatus] = useState(0);
 
-  const handleSubmit = (data) => {
-    login(createToken, data, setStatus);
+  const handleSubmit = async (data) => {
+    const answer = await login(createToken, data);
+    setStatus(answer);
   };
 
-  if (status === 200) {
+  if (status === true) {
     history.push('/');
   }
   let result = '';
-  if (status === 200) {
+  if (status === true) {
     result = 'Redirecting to Home page';
-  } else if (status === 401) {
+  } else if (status === false) {
     result = 'The email or the password is wrong';
   }
 
