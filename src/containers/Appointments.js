@@ -30,7 +30,7 @@ const Appointments = ({
   };
 
   if (appointments.size === 0 || cars.length === 0) {
-    return null;
+    return <p>Sorry, you don&apost have any appointments</p>;
   }
   const count = Math.floor((appointments.size - 1) / 6) + 1;
   const pagination = (
