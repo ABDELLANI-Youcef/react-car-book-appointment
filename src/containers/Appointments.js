@@ -16,12 +16,15 @@ const Appointments = ({
       carsListRequest(authentication.authToken, createCarsList);
     }
   }, []);
+  const [size, setSize] = useState(0);
   const [page, setPage] = useState(0);
-  useEffect(() => {
+  useEffect(async () => {
     if (cars.length === 0) {
       carsListRequest(authentication.authToken, createCarsList);
     }
-    appointmentsListRequest(authentication.authToken, createAppointmentsList, page + 1);
+    const total = await appointmentsListRequest(authentication.authToken, createAppointmentsList,
+      page + 1, authentication.id);
+    setSize(total);
   }, [page]);
 
   const handlePageClick = (data) => {
@@ -32,7 +35,7 @@ const Appointments = ({
   if (appointments.size === 0 || cars.length === 0) {
     return <p>Sorry, you don&apost have any appointments</p>;
   }
-  const count = Math.floor((appointments.size - 1) / 6) + 1;
+  const count = Math.floor((size - 1) / 6) + 1;
   const pagination = (
     <ReactPaginate
       previousLabel="previous"
@@ -62,7 +65,7 @@ const Appointments = ({
     <div className={styles.container}>
       <h1>Your already reserved appointments</h1>
       <div className={styles.product_list}>
-        {appointments.appointments.map((a) => {
+        {appointments.map((a) => {
           const car = correspondCar(a.car_id);
           return (
             <div key={a.id}>
@@ -106,7 +109,7 @@ const Appointments = ({
 
 Appointments.propTypes = {
   authentication: PropTypes.objectOf(PropTypes.any).isRequired,
-  appointments: PropTypes.objectOf(PropTypes.any).isRequired,
+  appointments: PropTypes.arrayOf(PropTypes.any).isRequired,
   cars: PropTypes.arrayOf(PropTypes.any).isRequired,
   createAppointmentsList: PropTypes.func.isRequired,
   createCarsList: PropTypes.func.isRequired,

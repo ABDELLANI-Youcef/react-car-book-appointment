@@ -3,9 +3,7 @@ import {
   SET_APPOINTMENT, REMOVE_APPOINTMENT,
 } from '../actions/index';
 
-const defaultState = { appointments: [], size: -1 };
-
-const appointmentsReducer = (state = defaultState, action) => {
+const appointmentsReducer = (state = [], action) => {
   switch (action.type) {
     case CREATE_APPOINTMENTS_LIST:
       return action.payload;

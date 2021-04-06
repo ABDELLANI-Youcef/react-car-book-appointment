@@ -23,7 +23,7 @@ export const createAppointmentRequest = async (authToken, carId, dateCity) => {
   }
 };
 
-export const appointmentsListRequest = async (authToken, createAppointmentsList, page) => {
+export const appointmentsListRequest = async (authToken, createAppointmentsList, page, id) => {
   try {
     const options = {
       method: 'GET',
@@ -33,12 +33,12 @@ export const appointmentsListRequest = async (authToken, createAppointmentsList,
         Authorization: authToken,
       },
     };
-    const response = await fetch(`${URL}/appointments?page=${page}`, options);
+    const response = await fetch(`${URL}/users/${id}/appointments?page=${page}`, options);
     const data = await response.json();
 
-    createAppointmentsList(data);
-    return true;
+    createAppointmentsList(data.appointments);
+    return data.size;
   } catch (error) {
-    return false;
+    return 0;
   }
 };
