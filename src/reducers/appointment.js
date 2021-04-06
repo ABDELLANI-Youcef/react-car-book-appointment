@@ -1,11 +1,11 @@
 import {
-  CREATE_APPOINTMENTS_LIST,
+  LIST_APPOINTMENTS,
   SET_APPOINTMENT, REMOVE_APPOINTMENT,
 } from '../actions/index';
 
 const appointmentsReducer = (state = [], action) => {
   switch (action.type) {
-    case CREATE_APPOINTMENTS_LIST:
+    case LIST_APPOINTMENTS:
       return action.payload;
 
     case SET_APPOINTMENT:

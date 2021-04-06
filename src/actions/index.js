@@ -1,7 +1,7 @@
 const CREATE_TOKEN = 'CREATE_TOKEN';
 const REMOVE_TOKEN = 'REMOVE_TOKEN';
 const CREATE_CARS_LIST = 'CREATE_CARS_LIST';
-const CREATE_APPOINTMENTS_LIST = 'CREATE_APPOINTMENTS_LIST';
+const LIST_APPOINTMENTS = 'LIST_APPOINTMENTS';
 const SET_APPOINTMENT = 'SET_APPOINTMENT';
 const REMOVE_APPOINTMENT = 'REMOVE_APPOINTMENT';
 
@@ -20,7 +20,7 @@ const createCarsList = (list) => ({
 });
 
 const createAppointmentsList = (list) => ({
-  type: CREATE_APPOINTMENTS_LIST,
+  type: LIST_APPOINTMENTS,
   payload: list,
 });
 
@@ -36,6 +36,6 @@ const removeAppointment = (id) => ({
 
 export {
   CREATE_TOKEN, createToken, CREATE_CARS_LIST, createCarsList, REMOVE_TOKEN, removeToken,
-  CREATE_APPOINTMENTS_LIST, createAppointmentsList, setAppointment,
+  LIST_APPOINTMENTS, createAppointmentsList, setAppointment,
   SET_APPOINTMENT, REMOVE_APPOINTMENT, removeAppointment,
 };
