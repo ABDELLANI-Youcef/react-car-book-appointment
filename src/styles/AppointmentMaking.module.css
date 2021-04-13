@@ -1,0 +1,22 @@
+.container {
+  padding: 20px;
+}
+
+.product_image {
+  width: 60%;
+  padding-right: 20px;
+}
+
+.product_details {
+  display: flex;
+  align-items: center;
+}
+
+.product_details li {
+  margin-bottom: 15px;
+}
+
+.details_title {
+  font-weight: bold;
+  margin-right: 5px;
+}
